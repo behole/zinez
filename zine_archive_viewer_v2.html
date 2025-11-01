@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punk Zine Visual Archive - Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --punk-red: #ff0066;
+            --punk-pink: #ff69b4;
+            --punk-yellow: #ffff00;
+            --punk-green: #00ff00;
+            --punk-black: #000000;
+            --punk-white: #ffffff;
+            --punk-grey: #1a1a1a;
+            --card-bg: #0a0a0a;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: var(--punk-black);
+            color: var(--punk-white);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Punk noise background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 0, 102, 0.03) 2px,
+                    rgba(255, 0, 102, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header with punk aesthetic */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--punk-black) 0%, var(--punk-grey) 100%);
+            border: 3px solid var(--punk-red);
+            transform: rotate(-0.5deg);
+        }
+        
+        .header-inner {
+            transform: rotate(0.5deg);
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: var(--punk-red);
+            text-shadow: 
+                3px 3px 0 var(--punk-pink),
+                6px 6px 0 var(--punk-black),
+                6px 6px 20px rgba(255, 0, 102, 0.5);
+            margin-bottom: 10px;
+            animation: glitch 2s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { text-shadow: 3px 3px 0 var(--punk-pink), 6px 6px 0 var(--punk-black); }
+            25% { text-shadow: -3px 3px 0 var(--punk-green), 6px -6px 0 var(--punk-yellow); }
+            50% { text-shadow: 3px -3px 0 var(--punk-pink), -6px 6px 0 var(--punk-black); }
+            75% { text-shadow: -3px -3px 0 var(--punk-yellow), -6px -6px 0 var(--punk-green); }
+        }
+        
+        .subtitle {
+            color: var(--punk-white);
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            opacity: 0.8;
+        }
+        
+        .year-range {
+            color: var(--punk-yellow);
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1.4em;
+        }
+        
+        /* Search and filters */
+        .controls {
+            background: var(--card-bg);
+            border: 2px solid var(--punk-red);
+            padding: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .controls::after {
+            content: "SEARCH & DESTROY";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--punk-black);
+            color: var(--punk-red);
+            padding: 0 10px;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.3em;
+            background: var(--punk-black);
+            color: var(--punk-white);
+            border: 3px solid var(--punk-red);
+            outline: none;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .search-box::placeholder {
+            color: #666;
+            text-transform: none;
+        }
+        
+        .search-box:focus {
+            box-shadow: 
+                0 0 20px rgba(255, 0, 102, 0.5),
+                inset 0 0 10px rgba(255, 0, 102, 0.2);
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--punk-black);
+            color: var(--punk-white);
+            border: 2px solid var(--punk-red);
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn:hover {
+            transform: scale(1.05) rotate(-2deg);
+            background: var(--punk-red);
+            color: var(--punk-black);
+            box-shadow: 4px 4px 0 var(--punk-pink);
+        }
+        
+        .filter-btn.active {
+            background: var(--punk-red);
+            color: var(--punk-black);
+            transform: rotate(-2deg);
+        }
+        
+        /* View mode toggle */
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .view-btn {
+            padding: 8px 16px;
+            background: transparent;
+            color: var(--punk-white);
+            border: 2px solid var(--punk-pink);
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+        }
+        
+        .view-btn.active {
+            background: var(--punk-pink);
+            color: var(--punk-black);
+        }
+        
+        /* Stats */
+        .stats {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.2em;
+            color: var(--punk-yellow);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        /* Grid view */
+        .zine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .zine-grid.list-view {
+            grid-template-columns: 1fr;
+        }
+        
+        /* Zine card with image */
+        .zine-card {
+            background: var(--card-bg);
+            border: 2px solid var(--punk-red);
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .zine-card:hover {
+            transform: rotate(-1deg) scale(1.02);
+            box-shadow: 
+                5px 5px 0 var(--punk-pink),
+                10px 10px 0 var(--punk-yellow),
+                10px 10px 30px rgba(255, 0, 102, 0.3);
+            z-index: 10;
+        }
+        
+        .zine-cover {
+            width: 100%;
+            height: 300px;
+            background: var(--punk-grey);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid var(--punk-red);
+        }
+        
+        .zine-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.1) saturate(1.2);
+        }
+        
+        .zine-cover.no-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    var(--punk-grey),
+                    var(--punk-grey) 10px,
+                    var(--card-bg) 10px,
+                    var(--card-bg) 20px
+                );
+        }
+        
+        .no-image-text {
+            text-align: center;
+            color: var(--punk-red);
+            font-size: 1.5em;
+            font-weight: bold;
+            transform: rotate(-10deg);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .zine-year {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--punk-red);
+            color: var(--punk-black);
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transform: rotate(5deg);
+        }
+        
+        .zine-info {
+            padding: 20px;
+        }
+        
+        .zine-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--punk-red);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .zine-issue {
+            color: var(--punk-yellow);
+            font-size: 0.9em;
+        }
+        
+        .zine-location {
+            color: var(--punk-pink);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .zine-description {
+            color: var(--punk-white);
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .zine-bands {
+            color: var(--punk-green);
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        
+        .zine-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            background: transparent;
+            color: var(--punk-red);
+            border: 1px solid var(--punk-red);
+            padding: 3px 8px;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* List view specific */
+        .list-view .zine-card {
+            display: flex;
+            height: 200px;
+        }
+        
+        .list-view .zine-cover {
+            width: 200px;
+            height: 100%;
+            border-right: 2px solid var(--punk-red);
+            border-bottom: none;
+            flex-shrink: 0;
+        }
+        
+        .list-view .zine-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Modal for full view */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 900px;
+            width: 100%;
+            background: var(--card-bg);
+            border: 3px solid var(--punk-red);
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 40px;
+            height: 40px;
+            background: var(--punk-red);
+            color: var(--punk-black);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+        
+        .modal-close:hover {
+            background: var(--punk-pink);
+        }
+        
+        .modal-image {
+            width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            background: var(--punk-grey);
+        }
+        
+        .modal-info {
+            padding: 30px;
+        }
+        
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--punk-red);
+            font-size: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        /* Add new zine button */
+        .add-zine-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--punk-red);
+            color: var(--punk-black);
+            border: 3px solid var(--punk-black);
+            border-radius: 50%;
+            font-size: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 100;
+            font-weight: bold;
+        }
+        
+        .add-zine-btn:hover {
+            transform: rotate(90deg) scale(1.1);
+            background: var(--punk-yellow);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px 10px;
+            }
+            
+            h1 {
+                letter-spacing: 2px;
+            }
+            
+            .zine-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            
+            .list-view .zine-card {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .list-view .zine-cover {
+                width: 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 2px solid var(--punk-red);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-inner">
+                <h1>Punk Zine Archive</h1>
+                <div class="subtitle">Visual Database of Punk Zines</div>
+                <div class="year-range">1976 — 2019</div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <input type="text" class="search-box" id="searchInput" 
+                   placeholder="Search: zine name, band, location, year...">
+            
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="1970s">70s</button>
+                <button class="filter-btn" data-filter="1980s">80s</button>
+                <button class="filter-btn" data-filter="1990s">90s</button>
+                <button class="filter-btn" data-filter="2000s">00s+</button>
+                <button class="filter-btn" data-filter="UK">UK</button>
+                <button class="filter-btn" data-filter="USA">USA</button>
+                <button class="filter-btn" data-filter="riot grrrl">RIOT GRRRL</button>
+                <button class="filter-btn" data-filter="hardcore">HARDCORE</button>
+                <button class="filter-btn" data-filter="anarcho">ANARCHO</button>
+            </div>
+            
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="grid">GRID</button>
+                <button class="view-btn" data-view="list">LIST</button>
+            </div>
+        </div>
+        
+        <div class="stats" id="stats">Loading punk history...</div>
+        
+        <div class="zine-grid" id="zineGrid">
+            <!-- Zines will be loaded here -->
+        </div>
+    </div>
+    
+    <!-- Modal for full view -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="modal-info" id="modalInfo"></div>
+        </div>
+    </div>
+    
+    <!-- Add new zine button -->
+    <button class="add-zine-btn" onclick="alert('Add zine feature coming soon!')">+</button>
+    
+    <script>
+        // Image URLs mapping - add your local image paths here
+        const imageUrls = {
+            "SG001": "images/sniffin_glue_01.jpg",
+            "SG003": "images/sniffin_glue_03.jpg",
+            "MRR001": "images/maximum_rocknroll_01.jpg",
+            "BK001": "images/bikini_kill_01.jpg",
+            // Add more as you get images
+        };
+        
+        // Embedded database with placeholder images
+        const zinesData = [
+            {
+                "id": "SG001",
+                "zine_name": "Sniffin' Glue",
+                "issue_number": "1",
+                "year": "1976",
+                "location": "London, UK",
+                "image_url": "https://www.flickr.com/photos/stillunusual/albums/72157657899141379/",
+                "archive_source": "Flickr 1970s Fanzines Collection",
+                "description": "First issue of the most influential UK punk zine. Hand-drawn title in black felt-tip pen on photocopied A4 paper",
+                "tags": ["punk", "DIY", "UK", "1976", "first wave", "Ramones", "founding zine"],
+                "bands_featured": ["The Ramones", "Blue Oyster Cult"],
+                "circulation": "50 (first issue)",
+                "creators": "Mark Perry"
+            },
+            {
+                "id": "SG003",
+                "zine_name": "Sniffin' Glue",
+                "issue_number": "3",
+                "year": "1976",
+                "location": "London, UK",
+                "description": "Issue 3 with interviews of The Damned, Sex Pistols, Iggy Pop",
+                "tags": ["punk", "DIY", "UK", "1976", "Sex Pistols", "Iggy Pop", "The Damned"],
+                "bands_featured": ["The Damned", "The Sex Pistols", "Iggy Pop"],
+                "circulation": "thousands",
+                "creators": "Mark Perry, Danny Baker"
+            },
+            {
+                "id": "SG004",
+                "zine_name": "Sniffin' Glue",
+                "issue_number": "4",
+                "year": "1976",
+                "location": "London, UK",
+                "description": "The Clash on the cover",
+                "tags": ["punk", "The Clash", "UK", "1976"],
+                "bands_featured": ["The Clash"],
+                "circulation": "thousands",
+                "creators": "Mark Perry"
+            },
+            {
+                "id": "SG005",
+                "zine_name": "Sniffin' Glue",
+                "issue_number": "5",
+                "year": "1976",
+                "location": "London, UK",
+                "description": "Barrie Masters of Eddie and the Hot Rods on cover pulling irreverent pose",
+                "tags": ["punk", "Eddie and the Hot Rods", "UK", "1976"],
+                "bands_featured": ["Eddie and the Hot Rods"],
+                "circulation": "thousands",
+                "creators": "Mark Perry"
+            },
+            {
+                "id": "SG009",
+                "zine_name": "Sniffin' Glue",
+                "issue_number": "9",
+                "year": "1977",
+                "location": "London, UK",
+                "description": "April 1977 issue featuring Billy Idol",
+                "tags": ["punk", "Billy Idol", "The Clash", "The Damned", "Ramones", "Cortinas"],
+                "bands_featured": ["Billy Idol", "The Clash", "The Damned", "Ramones", "Cortinas"],
+                "circulation": "15000",
+                "creators": "Mark Perry"
+            },
+            {
+                "id": "SG012",
+                "zine_name": "Sniffin' Glue",
+                "issue_number": "12",
+                "year": "1977",
+                "location": "London, UK",
+                "description": "Final issue with flexi disc of Alternative TV's 'Love Lies Limp'",
+                "tags": ["punk", "final issue", "Alternative TV", "flexi disc"],
+                "bands_featured": ["Alternative TV"],
+                "circulation": "15000",
+                "creators": "Mark Perry"
+            },
+            {
+                "id": "PM001",
+                "zine_name": "Punk Magazine",
+                "issue_number": "1",
+                "year": "1976",
+                "location": "New York City, USA",
+                "description": "First issue with Lou Reed on cover",
+                "tags": ["punk", "NYC", "Lou Reed", "founding zine", "USA"],
+                "bands_featured": ["Lou Reed"],
+                "creators": "John Holmstrom, Ged Dunn, Legs McNeil"
+            },
+            {
+                "id": "MRR001",
+                "zine_name": "Maximum Rocknroll",
+                "issue_number": "1",
+                "year": "1982",
+                "location": "Berkeley/San Francisco, USA",
+                "image_url": "https://archive.org/details/MaximumRocknrollNo.11982",
+                "archive_source": "Internet Archive",
+                "description": "First issue of influential hardcore punk zine",
+                "tags": ["hardcore", "punk", "political", "DIY", "USA", "1980s"],
+                "bands_featured": ["Various Northern California bands"],
+                "circulation": "16000 (at peak)",
+                "creators": "Tim Yohannan"
+            },
+            {
+                "id": "MRR013",
+                "zine_name": "Maximum Rocknroll",
+                "issue_number": "13",
+                "year": "1984",
+                "location": "San Francisco, USA",
+                "description": "Classic mid-80s issue",
+                "tags": ["hardcore", "punk", "political", "anarchist mantras"],
+                "bands_featured": ["Various hardcore bands"],
+                "circulation": "16000",
+                "creators": "Tim Yohannan and collective"
+            },
+            {
+                "id": "MRR109",
+                "zine_name": "Maximum Rocknroll",
+                "issue_number": "109",
+                "year": "1992",
+                "location": "San Francisco, USA",
+                "image_url": "https://archive.org/details/maximumrnr",
+                "archive_source": "Internet Archive",
+                "description": "Absolutely Queer issue with interviews",
+                "tags": ["queer", "punk", "LGBTQ", "Pansy Division", "Tribe 8"],
+                "bands_featured": ["Vaginal Creme Davis", "Bruce La Bruce", "Pansy Division", "Donna Dresch", "Tribe 8"],
+                "circulation": "16000",
+                "creators": "MRR collective"
+            },
+            {
+                "id": "MRR432",
+                "zine_name": "Maximum Rocknroll",
+                "issue_number": "432",
+                "year": "2019",
+                "location": "San Francisco, USA",
+                "description": "Final print issue with cover by Martin Sprouse",
+                "tags": ["final issue", "punk", "end of era", "hardcore"],
+                "bands_featured": ["Various"],
+                "circulation": "Unknown (declining)",
+                "creators": "MRR collective"
+            },
+            {
+                "id": "FS024",
+                "zine_name": "Flipside",
+                "issue_number": "24",
+                "year": "1980",
+                "location": "Los Angeles, USA",
+                "image_url": "https://archive.org/details/flipside-24-1980",
+                "archive_source": "Internet Archive",
+                "description": "Jack Grisham/TSOL on cover",
+                "tags": ["LA punk", "TSOL", "punk", "1980s", "California"],
+                "bands_featured": ["TSOL", "Kaos", "Chiefs", "Kommunity FK", "Social Unrest"],
+                "creators": "Flipside collective"
+            },
+            {
+                "id": "SLASH001",
+                "zine_name": "Slash",
+                "issue_number": "Various",
+                "year": "1977-1980",
+                "location": "Los Angeles, USA",
+                "description": "Important LA punk zine",
+                "tags": ["LA punk", "California", "1970s", "punk"],
+                "bands_featured": ["X", "The Germs", "Black Flag"],
+                "creators": "Steve Samiof, Melanie Nissen"
+            },
+            {
+                "id": "SD001",
+                "zine_name": "Search & Destroy",
+                "issue_number": "Various",
+                "year": "1977",
+                "location": "San Francisco, USA",
+                "description": "San Francisco punk zine, later became RE/Search",
+                "tags": ["SF punk", "California", "1970s", "punk", "art"],
+                "bands_featured": ["Dead Kennedys", "Crime", "The Avengers"],
+                "creators": "V. Vale"
+            },
+            {
+                "id": "RT001",
+                "zine_name": "Ripped & Torn",
+                "issue_number": "Various",
+                "year": "1976-1979",
+                "location": "Glasgow/Cumbernauld, Scotland",
+                "description": "First Scottish punk zine, 'Loudest Punk Fanzine in the UK'",
+                "tags": ["Scottish punk", "UK", "1970s", "DIY"],
+                "bands_featured": ["Sex Pistols", "The Clash", "Scottish bands"],
+                "creators": "Tony Drayton"
+            },
+            {
+                "id": "SB001",
+                "zine_name": "Sideburns",
+                "issue_number": "1",
+                "year": "1977",
+                "location": "UK",
+                "description": "Featured famous 'three chords' drawing",
+                "tags": ["punk", "UK", "DIY", "iconic", "three chords"],
+                "bands_featured": ["Various"],
+                "creators": "Tony Moon"
+            },
+            {
+                "id": "PP024",
+                "zine_name": "Punk Planet",
+                "issue_number": "24",
+                "year": "1998",
+                "location": "Chicago, USA",
+                "image_url": "https://archive.org/details/punk_planet_24_2",
+                "archive_source": "Internet Archive",
+                "description": "Art and Design issue with multiple covers",
+                "tags": ["punk", "art", "design", "Chicago", "1990s"],
+                "bands_featured": ["Various"],
+                "circulation": "16000",
+                "creators": "Dan Sinker"
+            },
+            {
+                "id": "PP067",
+                "zine_name": "Punk Planet",
+                "issue_number": "67",
+                "year": "2005",
+                "location": "Chicago, USA",
+                "image_url": "https://archive.org/details/punk_planet_67",
+                "archive_source": "Internet Archive",
+                "description": "Art and Design issue 3 with multiple covers",
+                "tags": ["punk", "art", "design", "Chicago", "2000s"],
+                "bands_featured": ["Various indie and punk bands"],
+                "circulation": "16000",
+                "creators": "Dan Sinker"
+            },
+            {
+                "id": "BK001",
+                "zine_name": "Bikini Kill",
+                "issue_number": "1",
+                "year": "1991",
+                "location": "Olympia, Washington, USA",
+                "description": "First issue of influential Riot Grrrl zine",
+                "tags": ["riot grrrl", "feminist", "punk", "DIY", "Olympia"],
+                "bands_featured": ["Bikini Kill", "Bratmobile"],
+                "circulation": "Unknown (sold out quickly)",
+                "creators": "Kathleen Hanna, Tobi Vail"
+            },
+            {
+                "id": "BK002",
+                "zine_name": "Bikini Kill",
+                "issue_number": "2",
+                "year": "1991",
+                "location": "Olympia, Washington, USA",
+                "description": "Girl Power issue with manifesto",
+                "tags": ["riot grrrl", "feminist", "girl power", "manifesto", "punk"],
+                "bands_featured": ["Bikini Kill", "Various riot grrrl bands"],
+                "circulation": "Unknown (sold out)",
+                "creators": "Kathleen Hanna, Tobi Vail"
+            },
+            {
+                "id": "BKCAB001",
+                "zine_name": "Bikini Kill: A Color and Activity Book",
+                "issue_number": "N/A",
+                "year": "1990",
+                "location": "Olympia, Washington, USA",
+                "image_url": "https://peoplesgdarchive.org/item/15717/",
+                "archive_source": "People's Graphic Design Archive",
+                "description": "Interactive coloring book zine with punk sensibilities",
+                "tags": ["riot grrrl", "feminist", "interactive", "coloring book", "DIY"],
+                "bands_featured": ["Bikini Kill"],
+                "creators": "Bikini Kill band members"
+            },
+            {
+                "id": "JIG001",
+                "zine_name": "Jigsaw",
+                "issue_number": "Various",
+                "year": "1988-1995",
+                "location": "Olympia, Washington, USA",
+                "description": "Tobi Vail's pre-Riot Grrrl zine",
+                "tags": ["pre-riot grrrl", "feminist", "punk", "Olympia", "Tobi Vail"],
+                "bands_featured": ["Various punk and indie bands"],
+                "creators": "Tobi Vail"
+            },
+            {
+                "id": "GG001",
+                "zine_name": "Girl Germs",
+                "issue_number": "Various",
+                "year": "1990-1991",
+                "location": "Olympia, Washington, USA",
+                "description": "Early Riot Grrrl zine by Bratmobile members",
+                "tags": ["riot grrrl", "feminist", "punk", "Olympia", "Bratmobile"],
+                "bands_featured": ["Bratmobile", "Various riot grrrl bands"],
+                "creators": "Allison Wolfe, Molly Neuman"
+            },
+            {
+                "id": "RG001",
+                "zine_name": "Riot Grrrl",
+                "issue_number": "Various",
+                "year": "1991-1993",
+                "location": "Washington D.C., USA",
+                "image_url": "https://digdc.dclibrary.org/islandora/object/dcplislandora:38111",
+                "archive_source": "DC Public Library Digital Archive",
+                "description": "DC chapter Riot Grrrl zine",
+                "tags": ["riot grrrl", "feminist", "punk", "DC", "activism"],
+                "bands_featured": ["Various riot grrrl bands"],
+                "creators": "DC Riot Grrrl chapter"
+            },
+            {
+                "id": "PE001",
+                "zine_name": "Profane Existence",
+                "issue_number": "Various",
+                "year": "1989-present",
+                "location": "Minneapolis, USA",
+                "description": "Anarchist punk zine",
+                "tags": ["anarchist", "anarcho", "punk", "political", "Minneapolis", "crust punk"],
+                "bands_featured": ["Crust and anarcho-punk bands"],
+                "creators": "Collective"
+            },
+            {
+                "id": "FS019",
+                "zine_name": "Free Society",
+                "issue_number": "19",
+                "year": "2008",
+                "location": "Peterborough, Ontario, Canada",
+                "image_url": "https://archive.org/details/free-society-19-2008-peterborough-ontario-canada-hc-punk-zine",
+                "archive_source": "Internet Archive",
+                "description": "Canadian hardcore punk/anarchist zine",
+                "tags": ["hardcore", "anarchist", "anarcho", "Canadian", "punk", "2000s"],
+                "bands_featured": ["Various hardcore bands"],
+                "creators": "Unknown"
+            },
+            {
+                "id": "POW001",
+                "zine_name": "Punk on Wave (POW)",
+                "issue_number": "1",
+                "year": "Unknown",
+                "location": "Japan",
+                "image_url": "https://archive.org/details/punkonwavepowmagazine1",
+                "archive_source": "Internet Archive",
+                "description": "Japanese punk zine",
+                "tags": ["Japanese", "punk", "international", "Asian punk"],
+                "bands_featured": ["Japanese punk bands"],
+                "creators": "Unknown"
+            },
+            {
+                "id": "JL001",
+                "zine_name": "Jet Lag",
+                "issue_number": "Various",
+                "year": "1980-1981",
+                "location": "St. Louis, USA",
+                "description": "St. Louis punk scene coverage",
+                "tags": ["St. Louis", "punk", "regional", "1980s", "Midwest"],
+                "bands_featured": ["St. Louis punk bands"],
+                "creators": "Unknown"
+            },
+            {
+                "id": "WGP001",
+                "zine_name": "We Got Power",
+                "issue_number": "Various",
+                "year": "Early 1980s",
+                "location": "Los Angeles, USA",
+                "description": "LA hardcore scene documentation",
+                "tags": ["LA hardcore", "California", "1980s", "punk", "SST"],
+                "bands_featured": ["Black Flag", "Minutemen", "LA hardcore bands"],
+                "creators": "David Markey, Jordan Schwartz"
+            },
+            {
+                "id": "SV001",
+                "zine_name": "Suburban Voice",
+                "issue_number": "Various",
+                "year": "1980s-1990s",
+                "location": "Boston, USA",
+                "description": "Boston area hardcore zine",
+                "tags": ["Boston", "hardcore", "straight edge", "punk", "East Coast"],
+                "bands_featured": ["Boston hardcore bands", "SSD", "DYS"],
+                "creators": "Al Quint"
+            },
+            {
+                "id": "KYPG001",
+                "zine_name": "Kill Your Pet Puppy",
+                "issue_number": "Various",
+                "year": "1980-1984",
+                "location": "UK",
+                "description": "UK anarcho-punk zine",
+                "tags": ["anarcho-punk", "anarcho", "UK", "1980s", "Crass", "political"],
+                "bands_featured": ["Crass", "Poison Girls", "anarcho-punk bands"],
+                "creators": "Tony Drayton (later)"
+            },
+            {
+                "id": "48T001",
+                "zine_name": "48 Thrills",
+                "issue_number": "1",
+                "year": "1976",
+                "location": "London, UK",
+                "description": "Early UK punk zine with Sex Pistols and Clash coverage",
+                "tags": ["UK punk", "1976", "Sex Pistols", "The Clash", "first wave"],
+                "bands_featured": ["Sex Pistols", "The Clash"],
+                "creators": "Unknown"
+            },
+            {
+                "id": "CW001",
+                "zine_name": "Chainsaw",
+                "issue_number": "Various",
+                "year": "1977-1978",
+                "location": "London, UK",
+                "description": "UK punk zine from first wave",
+                "tags": ["UK punk", "1977", "London", "first wave", "DIY"],
+                "bands_featured": ["UK punk bands"],
+                "creators": "Unknown"
+            }
+        ];
+        
+        let filteredZines = [...zinesData];
+        let currentFilter = 'all';
+        let currentView = 'grid';
+        
+        // Get image for zine
+        function getZineImage(zine) {
+            // Check if we have a local image
+            if (imageUrls[zine.id]) {
+                return imageUrls[zine.id];
+            }
+            // For Internet Archive URLs, try to construct a thumbnail URL
+            if (zine.image_url && zine.image_url.includes('archive.org')) {
+                const match = zine.image_url.match(/details\/([^\/]+)/);
+                if (match) {
+                    return `https://archive.org/services/img/${match[1]}`;
+                }
+            }
+            // Return null for no image
+            return null;
+        }
+        
+        // Display zines with images
+        function displayZines() {
+            const grid = document.getElementById('zineGrid');
+            
+            if (filteredZines.length === 0) {
+                grid.innerHTML = '<div class="no-results">No Zines Found - Try Different Search</div>';
+                return;
+            }
+            
+            grid.innerHTML = filteredZines.map(zine => {
+                const image = getZineImage(zine);
+                const coverHtml = image 
+                    ? `<img src="${image}" alt="${zine.zine_name}" onerror="this.parentElement.innerHTML='<div class=\\'no-image-text\\'>${zine.zine_name}</div>'; this.parentElement.classList.add('no-image')">`
+                    : `<div class="no-image-text">${zine.zine_name}</div>`;
+                
+                return `
+                    <div class="zine-card" onclick="openModal('${zine.id}')">
+                        <div class="zine-cover ${!image ? 'no-image' : ''}">
+                            ${coverHtml}
+                            ${zine.year ? `<div class="zine-year">${zine.year}</div>` : ''}
+                        </div>
+                        <div class="zine-info">
+                            <div class="zine-title">
+                                ${zine.zine_name}
+                                ${zine.issue_number && zine.issue_number !== 'Various' ? 
+                                    `<span class="zine-issue">#${zine.issue_number}</span>` : ''}
+                            </div>
+                            <div class="zine-location">${zine.location}</div>
+                            <div class="zine-description">${zine.description}</div>
+                            ${zine.bands_featured && zine.bands_featured.length > 0 ? 
+                                `<div class="zine-bands">Bands: ${zine.bands_featured.join(', ')}</div>` : ''}
+                            <div class="zine-tags">
+                                ${zine.tags.slice(0, 5).map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Open modal
+        function openModal(zineId) {
+            const zine = zinesData.find(z => z.id === zineId);
+            if (!zine) return;
+            
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modalImage');
+            const modalInfo = document.getElementById('modalInfo');
+            
+            const image = getZineImage(zine);
+            if (image) {
+                modalImage.src = image;
+                modalImage.style.display = 'block';
+            } else {
+                modalImage.style.display = 'none';
+            }
+            
+            modalInfo.innerHTML = `
+                <h2 style="color: var(--punk-red); margin-bottom: 20px;">
+                    ${zine.zine_name} ${zine.issue_number && zine.issue_number !== 'Various' ? '#' + zine.issue_number : ''}
+                </h2>
+                <p style="color: var(--punk-yellow); margin-bottom: 10px;">
+                    ${zine.year || 'Year unknown'} • ${zine.location} • ${zine.creators || 'Unknown creators'}
+                </p>
+                <p style="margin-bottom: 15px;">${zine.description}</p>
+                ${zine.bands_featured && zine.bands_featured.length > 0 ? 
+                    `<p style="color: var(--punk-green); margin-bottom: 10px;">Bands: ${zine.bands_featured.join(', ')}</p>` : ''}
+                ${zine.circulation ? `<p style="color: var(--punk-pink);">Circulation: ${zine.circulation}</p>` : ''}
+                <div style="margin-top: 20px;">
+                    ${zine.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                ${zine.image_url && zine.image_url !== 'Not directly available' ? 
+                    `<a href="${zine.image_url}" target="_blank" style="color: var(--punk-yellow); display: inline-block; margin-top: 20px;">View Archive Source →</a>` : ''}
+            `;
+            
+            modal.classList.add('active');
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+        
+        // Update stats
+        function updateStats() {
+            const stats = document.getElementById('stats');
+            stats.textContent = `${filteredZines.length} of ${zinesData.length} ZINES DISPLAYED`;
+        }
+        
+        // Search function
+        function searchZines(query) {
+            if (!query || query === '') {
+                if (currentFilter === 'all') {
+                    filteredZines = [...zinesData];
+                } else {
+                    filterZines(currentFilter);
+                    return;
+                }
+            } else {
+                const searchTerm = query.toLowerCase();
+                filteredZines = zinesData.filter(zine => {
+                    return (
+                        zine.zine_name.toLowerCase().includes(searchTerm) ||
+                        zine.description.toLowerCase().includes(searchTerm) ||
+                        zine.location.toLowerCase().includes(searchTerm) ||
+                        (zine.year && zine.year.toString().includes(searchTerm)) ||
+                        (zine.creators && zine.creators.toLowerCase().includes(searchTerm)) ||
+                        (zine.bands_featured && zine.bands_featured.some(band => 
+                            band.toLowerCase().includes(searchTerm))) ||
+                        zine.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                    );
+                });
+                
+                // Apply current filter on top of search
+                if (currentFilter !== 'all') {
+                    applyFilter(currentFilter);
+                }
+            }
+            displayZines();
+            updateStats();
+        }
+        
+        // Filter function
+        function filterZines(filter) {
+            currentFilter = filter;
+            const searchQuery = document.getElementById('searchInput').value;
+            
+            if (filter === 'all') {
+                filteredZines = [...zinesData];
+            } else {
+                applyFilter(filter);
+            }
+            
+            // Apply search on top of filter if there's a search query
+            if (searchQuery) {
+                searchZines(searchQuery);
+                return;
+            }
+            
+            displayZines();
+            updateStats();
+        }
+        
+        function applyFilter(filter) {
+            if (filter === '1970s') {
+                filteredZines = filteredZines.filter(zine => zine.year && zine.year >= 1970 && zine.year < 1980);
+            } else if (filter === '1980s') {
+                filteredZines = filteredZines.filter(zine => zine.year && zine.year >= 1980 && zine.year < 1990);
+            } else if (filter === '1990s') {
+                filteredZines = filteredZines.filter(zine => zine.year && zine.year >= 1990 && zine.year < 2000);
+            } else if (filter === '2000s') {
+                filteredZines = filteredZines.filter(zine => zine.year && zine.year >= 2000);
+            } else {
+                filteredZines = filteredZines.filter(zine => 
+                    zine.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())) ||
+                    zine.location.toLowerCase().includes(filter.toLowerCase())
+                );
+            }
+        }
+        
+        // Toggle view
+        function toggleView(view) {
+            currentView = view;
+            const grid = document.getElementById('zineGrid');
+            if (view === 'list') {
+                grid.classList.add('list-view');
+            } else {
+                grid.classList.remove('list-view');
+            }
+        }
+        
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchZines(e.target.value);
+        });
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                filterZines(e.target.dataset.filter);
+            });
+        });
+        
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                toggleView(e.target.dataset.view);
+            });
+        });
+        
+        // Click outside modal to close
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') {
+                closeModal();
+            }
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            displayZines();
+            updateStats();
+        });
+    </script>
+</body>
+</html>

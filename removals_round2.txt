@@ -1,0 +1,77 @@
+# Bulk title patterns
+name~Byte
+name~MiniSex
+name~Popeye
+name~73 Amateur Radio
+name~73 Magazine
+name~SPEX
+name~Absolute Underground
+name~Zine Cover
+
+# Explicit IDs
+id=JSF001
+id=AIH001
+id=TLG001
+id=KHT001
+id=MT001
+id=WAD001
+id=NUM001
+id=ECO001
+id=AN001
+id=GBJ001
+id=TUF001
+id=S029
+id=600
+id=SZ003
+id=COA001
+id=JLL001
+id=AAM001
+id=TMA002
+id=GLB001
+id=RAL001
+id=PC002
+id=NT001
+id=MLA003
+id=CCT001
+id=SSL001
+id=SSL002
+id=TVW001
+id=BHM001
+id=TWR001
+id=TFT002
+id=TFT003
+id=CIN001
+id=FZC001
+id=WIW001
+id=NPE001
+id=IM002
+id=ARO001
+id=TBE001
+id=TAD001
+id=FLA002
+id=SOF005
+id=RB003
+id=RB002
+id=RB004
+id=EPT001
+id=ETI001
+id=HOB001
+id=TUA001
+id=MMM002
+id=EDC001
+id=767
+id=W010
+id=FTM002
+id=F079
+id=F080
+id=AS003
+id=F081
+id=RB005
+id=EPR001
+id=EN004
+id=TNA001
+id=RMZ001
+id=RD006
+id=SHO001
+id=TFW036
+id=TFP034

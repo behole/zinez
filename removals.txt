@@ -1,0 +1,16 @@
+# Specific titles flagged by you
+name~young-hustler-nl-42
+name~TORONTO 30 YEARS LATER, Toby Swann- finally over the rainbow remix. Punkrock hit!
+name~Zombies under Stress - Heartattack
+name~Rimbaud/Elliott - Last Amendment - 'Oh America'
+name~Riot Grrrl panel discussion - Ladyfest Brighton, October 2005
+name~Riot Grrrl discussion panel - Ladyfest Brighton, Oct 2005
+name~Eminem in June 1999 Details Magazine
+name~Barely Legal Magazine
+name~73 Magazine (March 1981)
+name~CIA Reading Room cia-rdp96-00788r001100010004-6: PROCEEDINGS OF THE IEEE, THE PERSISTENT PARADOX OF PSYCHIC PHENOMENA: AN ENGINEERING PERSPECTIVE
+
+# Cautious porn-related patterns (dry-run first, we'll confirm together)
+name~Maximum Perversion
+name~Maximium Perversion
+name~Pleasure

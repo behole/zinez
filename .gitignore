@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Logs
+*.log
+
+# Backups
+backups/
+*.backup
+
+# OS
+.DS_Store
+.vscode/
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*~

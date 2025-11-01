@@ -1,0 +1,1629 @@
+{
+  "created": "2025-10-30T08:42:28.723853",
+  "total_packages": 83,
+  "packages": [
+    {
+      "zine_id": "SG003",
+      "zine_name": "Sniffin' Glue",
+      "ia_identifier": "punk-zine-sniffin-glue-issue3-1976",
+      "metadata": {
+        "title": "Sniffin' Glue",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Issue 3 with interviews of The Damned, Sex Pistols, Iggy Pop\n\nPunk zine from London, UK\nPublished: 1976\n\nFeatured bands: The Damned, The Sex Pistols, Iggy Pop\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; DIY; UK; 1976; Sex Pistols; Iggy Pop; The Damned",
+        "creator": "Mark Perry, Danny Baker",
+        "date": "1976",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "London, UK",
+        "volume": "3"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-sniffin-glue-issue3-1976.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.713846"
+    },
+    {
+      "zine_id": "SG004",
+      "zine_name": "Sniffin' Glue",
+      "ia_identifier": "punk-zine-sniffin-glue-issue4-1976",
+      "metadata": {
+        "title": "Sniffin' Glue",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "The Clash on the cover\n\nPunk zine from London, UK\nPublished: 1976\n\nFeatured bands: The Clash\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; The Clash; UK; 1976",
+        "creator": "Mark Perry",
+        "date": "1976",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "London, UK",
+        "volume": "4"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-sniffin-glue-issue4-1976.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.714112"
+    },
+    {
+      "zine_id": "SG005",
+      "zine_name": "Sniffin' Glue",
+      "ia_identifier": "punk-zine-sniffin-glue-issue5-1976",
+      "metadata": {
+        "title": "Sniffin' Glue",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Barrie Masters of Eddie and the Hot Rods on cover pulling irreverent pose\n\nPunk zine from London, UK\nPublished: 1976\n\nFeatured bands: Eddie and the Hot Rods\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; Eddie and the Hot Rods; UK; 1976",
+        "creator": "Mark Perry",
+        "date": "1976",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "London, UK",
+        "volume": "5"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-sniffin-glue-issue5-1976.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.714248"
+    },
+    {
+      "zine_id": "SG009",
+      "zine_name": "Sniffin' Glue",
+      "ia_identifier": "punk-zine-sniffin-glue-issue9-1977",
+      "metadata": {
+        "title": "Sniffin' Glue",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "April 1977 issue featuring Billy Idol\n\nPunk zine from London, UK\nPublished: 1977\n\nFeatured bands: Billy Idol, The Clash, The Damned, Ramones, Cortinas\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; Billy Idol; The Clash; The Damned; Ramones; Cortinas",
+        "creator": "Mark Perry",
+        "date": "1977",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "London, UK",
+        "volume": "9"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-sniffin-glue-issue9-1977.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.714371"
+    },
+    {
+      "zine_id": "SG012",
+      "zine_name": "Sniffin' Glue",
+      "ia_identifier": "punk-zine-sniffin-glue-issue12-1977",
+      "metadata": {
+        "title": "Sniffin' Glue",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Final issue with flexi disc of Alternative TV's 'Love Lies Limp'\n\nPunk zine from London, UK\nPublished: 1977\n\nFeatured bands: Alternative TV\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; final issue; Alternative TV; flexi disc",
+        "creator": "Mark Perry",
+        "date": "1977",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "London, UK",
+        "volume": "12"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-sniffin-glue-issue12-1977.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.714493"
+    },
+    {
+      "zine_id": "PM001",
+      "zine_name": "Punk Magazine",
+      "ia_identifier": "punk-zine-punk-magazine-issue1-1976",
+      "metadata": {
+        "title": "Punk Magazine",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "First issue with Lou Reed on cover\n\nPunk zine from New York City, USA\nPublished: 1976\n\nFeatured bands: Lou Reed\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; NYC; Lou Reed; founding zine; USA",
+        "creator": "John Holmstrom, Ged Dunn, Legs McNeil",
+        "date": "1976",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "New York City, USA",
+        "volume": "1"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-punk-magazine-issue1-1976.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.714613"
+    },
+    {
+      "zine_id": "MRR013",
+      "zine_name": "Maximum Rocknroll",
+      "ia_identifier": "punk-zine-maximum-rocknroll-issue13-1984",
+      "metadata": {
+        "title": "Maximum Rocknroll",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Classic mid-80s issue\n\nPunk zine from San Francisco, USA\nPublished: 1984\n\nFeatured bands: Various hardcore bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "hardcore; punk; political; anarchist mantras",
+        "creator": "Tim Yohannan and collective",
+        "date": "1984",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "San Francisco, USA",
+        "volume": "13"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-maximum-rocknroll-issue13-1984.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.714737"
+    },
+    {
+      "zine_id": "MRR432",
+      "zine_name": "Maximum Rocknroll",
+      "ia_identifier": "punk-zine-maximum-rocknroll-issue432-2019",
+      "metadata": {
+        "title": "Maximum Rocknroll",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Final print issue with cover by Martin Sprouse\n\nPunk zine from San Francisco, USA\nPublished: 2019\n\nFeatured bands: Various\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "final issue; punk; end of era; hardcore",
+        "creator": "MRR collective",
+        "date": "2019",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "San Francisco, USA",
+        "volume": "432"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-maximum-rocknroll-issue432-2019.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.715250"
+    },
+    {
+      "zine_id": "SLASH001",
+      "zine_name": "Slash",
+      "ia_identifier": "punk-zine-slash-issueVarious-1977-1980",
+      "metadata": {
+        "title": "Slash",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Important LA punk zine\n\nPunk zine from Los Angeles, USA\nPublished: 1977-1980\n\nFeatured bands: X, The Germs, Black Flag\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "LA punk; California; 1970s; punk",
+        "creator": "Steve Samiof, Melanie Nissen",
+        "date": "1977-1980",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "Los Angeles, USA",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-slash-issueVarious-1977-1980.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.715364"
+    },
+    {
+      "zine_id": "SD001",
+      "zine_name": "Search & Destroy",
+      "ia_identifier": "punk-zine-search--destroy-issueVarious-1977",
+      "metadata": {
+        "title": "Search & Destroy",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "San Francisco punk zine, later became RE/Search\n\nPunk zine from San Francisco, USA\nPublished: 1977\n\nFeatured bands: Dead Kennedys, Crime, The Avengers\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "SF punk; California; 1970s; punk; art",
+        "creator": "V. Vale",
+        "date": "1977",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "San Francisco, USA",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-search--destroy-issueVarious-1977.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.715481"
+    },
+    {
+      "zine_id": "RT001",
+      "zine_name": "Ripped & Torn",
+      "ia_identifier": "punk-zine-ripped--torn-issueVarious-1976-1979",
+      "metadata": {
+        "title": "Ripped & Torn",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "First Scottish punk zine, 'Loudest Punk Fanzine in the UK'\n\nPunk zine from Glasgow/Cumbernauld, Scotland\nPublished: 1976-1979\n\nFeatured bands: Sex Pistols, The Clash, Scottish bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "Scottish punk; UK; 1970s; DIY",
+        "creator": "Tony Drayton",
+        "date": "1976-1979",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "Glasgow/Cumbernauld, Scotland",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-ripped--torn-issueVarious-1976-1979.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.715588"
+    },
+    {
+      "zine_id": "SB001",
+      "zine_name": "Sideburns",
+      "ia_identifier": "punk-zine-sideburns-issue1-1977",
+      "metadata": {
+        "title": "Sideburns",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Featured famous 'three chords' drawing\n\nPunk zine from UK\nPublished: 1977\n\nFeatured bands: Various\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; UK; DIY; iconic; three chords",
+        "creator": "Tony Moon",
+        "date": "1977",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "UK",
+        "volume": "1"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-sideburns-issue1-1977.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.715702"
+    },
+    {
+      "zine_id": "BK001",
+      "zine_name": "Bikini Kill",
+      "ia_identifier": "punk-zine-bikini-kill-issue1-1991",
+      "metadata": {
+        "title": "Bikini Kill",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "First issue of influential Riot Grrrl zine\n\nPunk zine from Olympia, Washington, USA\nPublished: 1991\n\nFeatured bands: Bikini Kill, Bratmobile\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "riot grrrl; feminist; punk; DIY; Olympia",
+        "creator": "Kathleen Hanna, Tobi Vail",
+        "date": "1991",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "Olympia, Washington, USA",
+        "volume": "1"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-bikini-kill-issue1-1991.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.715813"
+    },
+    {
+      "zine_id": "BK002",
+      "zine_name": "Bikini Kill",
+      "ia_identifier": "punk-zine-bikini-kill-issue2-1991",
+      "metadata": {
+        "title": "Bikini Kill",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Girl Power issue with manifesto\n\nPunk zine from Olympia, Washington, USA\nPublished: 1991\n\nFeatured bands: Bikini Kill, Various riot grrrl bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "riot grrrl; feminist; girl power; manifesto; punk",
+        "creator": "Kathleen Hanna, Tobi Vail",
+        "date": "1991",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "Olympia, Washington, USA",
+        "volume": "2"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-bikini-kill-issue2-1991.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.715923"
+    },
+    {
+      "zine_id": "JIG001",
+      "zine_name": "Jigsaw",
+      "ia_identifier": "punk-zine-jigsaw-issueVarious-1988-1995",
+      "metadata": {
+        "title": "Jigsaw",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Tobi Vail's pre-Riot Grrrl zine\n\nPunk zine from Olympia, Washington, USA\nPublished: 1988-1995\n\nFeatured bands: Various punk and indie bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "pre-riot grrrl; feminist; punk; Olympia; Tobi Vail",
+        "creator": "Tobi Vail",
+        "date": "1988-1995",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "Olympia, Washington, USA",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-jigsaw-issueVarious-1988-1995.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.716155"
+    },
+    {
+      "zine_id": "GG001",
+      "zine_name": "Girl Germs",
+      "ia_identifier": "punk-zine-girl-germs-issueVarious-1990-1991",
+      "metadata": {
+        "title": "Girl Germs",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Early Riot Grrrl zine by Bratmobile members\n\nPunk zine from Olympia, Washington, USA\nPublished: 1990-1991\n\nFeatured bands: Bratmobile, Various riot grrrl bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "riot grrrl; feminist; punk; Olympia; Bratmobile",
+        "creator": "Allison Wolfe, Molly Neuman",
+        "date": "1990-1991",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "Olympia, Washington, USA",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-girl-germs-issueVarious-1990-1991.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.716321"
+    },
+    {
+      "zine_id": "PE001",
+      "zine_name": "Profane Existence",
+      "ia_identifier": "punk-zine-profane-existence-issueVarious-1989-present",
+      "metadata": {
+        "title": "Profane Existence",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Anarchist punk zine\n\nPunk zine from Minneapolis, USA\nPublished: 1989-present\n\nFeatured bands: Crust and anarcho-punk bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "anarchist; punk; political; Minneapolis; crust punk",
+        "creator": "Collective",
+        "date": "1989-present",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "Minneapolis, USA",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-profane-existence-issueVarious-1989-present.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.716457"
+    },
+    {
+      "zine_id": "JL001",
+      "zine_name": "Jet Lag",
+      "ia_identifier": "punk-zine-jet-lag-issueVarious-1980-1981",
+      "metadata": {
+        "title": "Jet Lag",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "St. Louis punk scene coverage\n\nPunk zine from St. Louis, USA\nPublished: 1980-1981\n\nFeatured bands: St. Louis punk bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "St. Louis; punk; regional; 1980s; Midwest",
+        "creator": "Unknown",
+        "date": "1980-1981",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "St. Louis, USA",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-jet-lag-issueVarious-1980-1981.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.716586"
+    },
+    {
+      "zine_id": "WGP001",
+      "zine_name": "We Got Power",
+      "ia_identifier": "punk-zine-we-got-power-issueVarious-Early 1980s",
+      "metadata": {
+        "title": "We Got Power",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "LA hardcore scene documentation\n\nPunk zine from Los Angeles, USA\nPublished: Early 1980s\n\nFeatured bands: Black Flag, Minutemen, LA hardcore bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "LA hardcore; California; 1980s; punk; SST",
+        "creator": "David Markey, Jordan Schwartz",
+        "date": "Early 1980s",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "Los Angeles, USA",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-we-got-power-issueVarious-Early 1980s.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.716789"
+    },
+    {
+      "zine_id": "SV001",
+      "zine_name": "Suburban Voice",
+      "ia_identifier": "punk-zine-suburban-voice-issueVarious-1980s-1990s",
+      "metadata": {
+        "title": "Suburban Voice",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Boston area hardcore zine\n\nPunk zine from Boston, USA\nPublished: 1980s-1990s\n\nFeatured bands: Boston hardcore bands, SSD, DYS\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "Boston; hardcore; straight edge; punk; East Coast",
+        "creator": "Al Quint",
+        "date": "1980s-1990s",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "Boston, USA",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-suburban-voice-issueVarious-1980s-1990s.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.716914"
+    },
+    {
+      "zine_id": "KYPG001",
+      "zine_name": "Kill Your Pet Puppy",
+      "ia_identifier": "punk-zine-kill-your-pet-puppy-issueVarious-1980-1984",
+      "metadata": {
+        "title": "Kill Your Pet Puppy",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "UK anarcho-punk zine\n\nPunk zine from UK\nPublished: 1980-1984\n\nFeatured bands: Crass, Poison Girls, anarcho-punk bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "anarcho-punk; UK; 1980s; Crass; political",
+        "creator": "Tony Drayton (later)",
+        "date": "1980-1984",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "UK",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-kill-your-pet-puppy-issueVarious-1980-1984.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717029"
+    },
+    {
+      "zine_id": "48T001",
+      "zine_name": "48 Thrills",
+      "ia_identifier": "punk-zine-48-thrills-issue1-1976",
+      "metadata": {
+        "title": "48 Thrills",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Early UK punk zine with Sex Pistols and Clash coverage\n\nPunk zine from London, UK\nPublished: 1976\n\nFeatured bands: Sex Pistols, The Clash\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "UK punk; 1976; Sex Pistols; The Clash; first wave",
+        "creator": "Unknown",
+        "date": "1976",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "London, UK",
+        "volume": "1"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-48-thrills-issue1-1976.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717135"
+    },
+    {
+      "zine_id": "CW001",
+      "zine_name": "Chainsaw",
+      "ia_identifier": "punk-zine-chainsaw-issueVarious-1977-1978",
+      "metadata": {
+        "title": "Chainsaw",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "UK punk zine from first wave\n\nPunk zine from London, UK\nPublished: 1977-1978\n\nFeatured bands: UK punk bands\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "UK punk; 1977; London; first wave; DIY",
+        "creator": "Unknown",
+        "date": "1977-1978",
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "coverage": "London, UK",
+        "volume": "Various"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-chainsaw-issueVarious-1977-1978.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717245"
+    },
+    {
+      "zine_id": "FZC001",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717386"
+    },
+    {
+      "zine_id": "FZC002",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717482"
+    },
+    {
+      "zine_id": "FZC003",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717579"
+    },
+    {
+      "zine_id": "FZC004",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717665"
+    },
+    {
+      "zine_id": "FZC005",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717747"
+    },
+    {
+      "zine_id": "FZC006",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717849"
+    },
+    {
+      "zine_id": "FZC007",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.717941"
+    },
+    {
+      "zine_id": "FZC008",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718022"
+    },
+    {
+      "zine_id": "FZC009",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718115"
+    },
+    {
+      "zine_id": "FZC010",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718202"
+    },
+    {
+      "zine_id": "FZC011",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718287"
+    },
+    {
+      "zine_id": "FZC012",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718372"
+    },
+    {
+      "zine_id": "FZC013",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718455"
+    },
+    {
+      "zine_id": "FZC014",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718540"
+    },
+    {
+      "zine_id": "FZC015",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718624"
+    },
+    {
+      "zine_id": "FZC016",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718715"
+    },
+    {
+      "zine_id": "FZC017",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718800"
+    },
+    {
+      "zine_id": "FZC018",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718885"
+    },
+    {
+      "zine_id": "FZC019",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.718970"
+    },
+    {
+      "zine_id": "FZC020",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719055"
+    },
+    {
+      "zine_id": "FZC021",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719141"
+    },
+    {
+      "zine_id": "FZC022",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719230"
+    },
+    {
+      "zine_id": "FZC023",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719314"
+    },
+    {
+      "zine_id": "FZC024",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719397"
+    },
+    {
+      "zine_id": "FZC025",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719478"
+    },
+    {
+      "zine_id": "FZC026",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719559"
+    },
+    {
+      "zine_id": "FZC027",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719644"
+    },
+    {
+      "zine_id": "FZC028",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719725"
+    },
+    {
+      "zine_id": "FZC029",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719817"
+    },
+    {
+      "zine_id": "FZC030",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719901"
+    },
+    {
+      "zine_id": "FZC031",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.719983"
+    },
+    {
+      "zine_id": "FZC032",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720063"
+    },
+    {
+      "zine_id": "FZC033",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720150"
+    },
+    {
+      "zine_id": "FZC034",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720233"
+    },
+    {
+      "zine_id": "FZC035",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720314"
+    },
+    {
+      "zine_id": "FZC036",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720394"
+    },
+    {
+      "zine_id": "FZC037",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720477"
+    },
+    {
+      "zine_id": "FZC038",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720558"
+    },
+    {
+      "zine_id": "FZC039",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720642"
+    },
+    {
+      "zine_id": "FZC040",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720727"
+    },
+    {
+      "zine_id": "FZC041",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720807"
+    },
+    {
+      "zine_id": "FZC042",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720887"
+    },
+    {
+      "zine_id": "FZC043",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.720973"
+    },
+    {
+      "zine_id": "FZC044",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721056"
+    },
+    {
+      "zine_id": "FZC045",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721137"
+    },
+    {
+      "zine_id": "FZC046",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721223"
+    },
+    {
+      "zine_id": "FZC047",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721304"
+    },
+    {
+      "zine_id": "FZC048",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721386"
+    },
+    {
+      "zine_id": "FZC049",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721468"
+    },
+    {
+      "zine_id": "FZC050",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721549"
+    },
+    {
+      "zine_id": "FZC051",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721635"
+    },
+    {
+      "zine_id": "FZC052",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721720"
+    },
+    {
+      "zine_id": "FZC053",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721801"
+    },
+    {
+      "zine_id": "FZC054",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721880"
+    },
+    {
+      "zine_id": "FZC055",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.721963"
+    },
+    {
+      "zine_id": "FZC056",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.722051"
+    },
+    {
+      "zine_id": "FZC057",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.722135"
+    },
+    {
+      "zine_id": "FZC058",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.722220"
+    },
+    {
+      "zine_id": "FZC059",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.722300"
+    },
+    {
+      "zine_id": "FZC060",
+      "zine_name": "Flickr zine cover",
+      "ia_identifier": "punk-zine-flickr-zine-cover",
+      "metadata": {
+        "title": "Flickr zine cover",
+        "mediatype": "texts",
+        "collection": "opensource",
+        "description": "Imported from external source; needs curation\n\nPunk zine from None\n\n---\nContributed by the Punk Zines Research Project\nPart of documenting underground punk culture and DIY publishing",
+        "subject": "punk; zine",
+        "creator": null,
+        "date": null,
+        "language": "eng",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
+      "upload_script": "ia_contributions/batch_scripts/upload_punk-zine-flickr-zine-cover.sh",
+      "status": "prepared",
+      "prepared_date": "2025-10-30T08:42:28.722389"
+    }
+  ]
+}

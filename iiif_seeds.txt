@@ -1,0 +1,5 @@
+# Paste IIIF manifest URLs here (one per line). Lines starting with # are ignored.
+# Example (replace with real manifests from Pratt, Barnard, etc.):
+# https://digital.library.example.edu/iiif/ark:/12345/abcde/manifest
+# https://iiif.example.org/presentation/3/manifest.json
+

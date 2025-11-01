@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Punk Zines Viewer (Offline)</title>
+  <style>
+    :root{
+      --bg:#0b0b0b;--fg:#f5f5f5;--hi:#ff0066;--alt:#ffe600;--mut:#9aa0a6;--card:#121212;--line:#222;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+    header{border-bottom:2px solid var(--line);padding:18px 16px}
+    h1{margin:0;font-size:22px;letter-spacing:2px;text-transform:uppercase;color:var(--hi)}
+    .sub{color:var(--mut);font-size:12px;margin-top:4px}
+    main{max-width:1200px;margin:0 auto;padding:16px}
+    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .search{flex:1 1 320px}
+    .search input{width:100%;padding:10px 12px;border:2px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    button{padding:8px 10px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
+    button.active{border-color:var(--hi);color:#000;background:var(--hi)}
+    .stats{margin:12px 0;color:var(--alt);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+    .grid.list{grid-template-columns:1fr}
+    .card{border:1px solid var(--line);background:var(--card);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+    .thumb{height:260px;background:#111;display:grid;place-items:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .thumb .ph{color:#444;font-size:12px}
+    .meta{padding:10px 12px}
+    .title{font-weight:600}
+    .small{font-size:12px;color:var(--mut)}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+    .tag{font-size:11px;border:1px solid var(--line);padding:2px 6px;border-radius:999px;color:var(--hi)}
+    .panel{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:10px}
+    canvas{width:100%;height:120px}
+
+    /* Lightbox */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:999}
+    .lb.open{display:flex}
+    .lb-box{max-width:min(92vw,1100px);max-height:90vh;background:#0e0e0e;border:1px solid #222;border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+    .lb-head{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid #222}
+    .lb-title{font-size:14px;color:#eee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .lb-actions{display:flex;gap:8px}
+    .lb-actions a, .lb-actions button{border:1px solid #333;background:#141414;color:#eee;border-radius:6px;padding:6px 10px;cursor:pointer;text-decoration:none}
+    .lb-img{display:grid;place-items:center;background:#0a0a0a}
+    .lb-img img{max-width:100%;max-height:70vh}
+    .lb-foot{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:8px 12px;border-top:1px solid #222;color:#999;font-size:12px}
+    .lb-id{color:#bbb;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    .lb-id button{margin-left:8px;border:1px solid #333;background:#141414;color:#eee;border-radius:6px;padding:3px 8px;cursor:pointer}
+  </style>
+  <script src="./data.js"></script>
+  <script>
+    // Utility helpers
+    function normText(x){return (x||"").toString().toLowerCase()}
+    function matchEntry(e,q){
+      if(!q) return true;
+      const t = normText(q);
+      const hay = [e.zine_name,e.issue_number,e.year,e.location,e.description,e.creators]
+        .concat(e.tags||[]).concat(e.bands_featured||[])
+        .map(normText).join("\n");
+      return t.split(/\s+/).every(tok=>hay.includes(tok)||hay.indexOf(tok)>-1);
+    }
+    function decadeOf(y){ if(!y) return null; return Math.floor(y/10)*10 }
+    function thumbFor(e){
+      if(e.local_image) return e.local_image; // not used yet, placeholder for future
+      if(e.ia_thumb) return e.ia_thumb;
+      if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
+      return null;
+    }
+
+    // State
+    const ALL = (window.ZINES||[]).map(z=>({
+      ...z,
+      year_primary: (typeof z.year_primary==='number'? z.year_primary : null)
+    }));
+    let query = "";
+    let decade = "all"; // '1970','1980','1990','2000'
+    let listMode = false;
+
+    function applyFilters(){
+      let res = ALL.filter(e=>matchEntry(e,query));
+      if(decade!=="all"){
+        const d = parseInt(decade,10);
+        res = res.filter(e=>decadeOf(e.year_primary)===d);
+      }
+      return res;
+    }
+
+    function renderStats(res){
+      const el = document.getElementById('stats');
+      const total = ALL.length;
+      const withImg = res.filter(e=>!!thumbFor(e)).length;
+      el.textContent = `${res.length} shown • ${withImg} with images • ${total} total`;
+    }
+
+    function renderGrid(res){
+      const grid = document.getElementById('grid');
+      grid.className = listMode? 'grid list' : 'grid';
+      grid.innerHTML = res.map((e,idx)=>{
+        const img = thumbFor(e);
+        const tags = (e.tags||[]).slice(0,4).map(t=>`<span class="tag">${t}</span>`).join('');
+        const title = [e.zine_name, e.issue_number && `#${e.issue_number}`].filter(Boolean).join(' ');
+        const locyr = [e.location, e.year].filter(Boolean).join(' • ');
+        return `
+          <article class="card" data-idx="${idx}">
+            <div class="thumb">${img? `<img loading="lazy" src="${img}" alt="${title}">` : `<div class="ph">No image</div>`}</div>
+            <div class="meta">
+              <div class="title">${title}</div>
+              <div class="small">${locyr}</div>
+              ${tags? `<div class="tags">${tags}</div>`: ''}
+            </div>
+          </article>`;
+      }).join('');
+      // enable lightbox open on card click
+      grid.querySelectorAll('.card').forEach(card=>{
+        card.addEventListener('click', ()=>{
+          const i = parseInt(card.getAttribute('data-idx'));
+          openLightbox(res, i);
+        });
+      });
+    }
+
+    function renderTimeline(){
+      const cnv = document.getElementById('timeline');
+      const ctx = cnv.getContext('2d');
+      const w = cnv.width = cnv.clientWidth; const h = cnv.height = cnv.clientHeight;
+      ctx.clearRect(0,0,w,h);
+      // group by year
+      const counts = new Map();
+      for(const e of ALL){
+        const y = e.year_primary; if(!y) continue; counts.set(y,(counts.get(y)||0)+1);
+      }
+      const years = [...counts.keys()].sort((a,b)=>a-b);
+      if(years.length===0) return;
+      const minY = years[0], maxY = years[years.length-1];
+      const pad = 24; const bars = maxY-minY+1;
+      const bw = Math.max(1, (w - pad*2) / bars);
+      const maxC = Math.max(...counts.values());
+      ctx.strokeStyle = '#333';
+      ctx.fillStyle = '#333';
+      ctx.beginPath(); ctx.moveTo(pad, h-22); ctx.lineTo(w-pad, h-22); ctx.stroke();
+      for(let y=minY;y<=maxY;y++){
+        const c = counts.get(y)||0;
+        const x = pad + (y-minY)*bw;
+        const bh = (h-40) * (c/maxC);
+        ctx.fillStyle = c? '#ff0066' : '#222';
+        ctx.fillRect(x, (h-22)-bh, bw-1, bh);
+      }
+      // decade ticks
+      ctx.fillStyle = '#9aa0a6'; ctx.font = '11px system-ui';
+      const startDec = Math.floor(minY/10)*10; const endDec = Math.floor(maxY/10)*10;
+      for(let d=startDec; d<=endDec; d+=10){
+        const x = pad + (d-minY)*bw; ctx.fillRect(x, h-24, 1, 6); ctx.fillText(String(d), x+2, h-8);
+      }
+    }
+
+    function sync(){
+      const res = applyFilters();
+      renderStats(res); renderGrid(res); renderTimeline();
+    }
+
+    // Lightbox logic
+    let LB_DATA = []; let LB_IDX = 0;
+    function openLightbox(arr, idx){
+      LB_DATA = arr; LB_IDX = idx;
+      const e = arr[idx];
+      const img = thumbFor(e);
+      const title = [e.zine_name, e.issue_number && `#${e.issue_number}`].filter(Boolean).join(' ');
+      const href = e.ia_item_url || e.archive_source || e.image_url || '#';
+      // inject
+      const t = document.getElementById('lb-title'); if(t) t.textContent = title || 'Zine';
+      const imgel = document.getElementById('lb-image');
+      if(imgel){ if(img){ imgel.src = img; imgel.alt = title; } else { imgel.removeAttribute('src'); imgel.alt = 'No image'; } }
+      const link = document.getElementById('lb-origin'); if(link){ link.href = href; link.target = '_blank'; }
+      const idEl = document.getElementById('lb-idval'); if(idEl){ idEl.textContent = e.id || '(no id)'; }
+      const lb = document.getElementById('lightbox'); if(lb) lb.classList.add('open');
+    }
+    function closeLightbox(){ const lb = document.getElementById('lightbox'); if(lb) lb.classList.remove('open'); }
+    function navLightbox(d){ if(!LB_DATA.length) return; LB_IDX = (LB_IDX + d + LB_DATA.length) % LB_DATA.length; openLightbox(LB_DATA, LB_IDX); }
+    document.addEventListener('keydown', (e)=>{
+      const lb = document.getElementById('lightbox');
+      if(!lb || !lb.classList.contains('open')) return;
+      if(e.key==='Escape') closeLightbox();
+      if(e.key==='ArrowRight') navLightbox(1);
+      if(e.key==='ArrowLeft') navLightbox(-1);
+    });
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+      document.getElementById('q').addEventListener('input', (e)=>{ query = e.target.value; sync(); });
+      document.querySelectorAll('[data-decade]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          document.querySelectorAll('[data-decade]').forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active'); decade = btn.dataset.decade; sync();
+        });
+      });
+      document.getElementById('mode').addEventListener('click', (e)=>{ listMode = !listMode; e.target.classList.toggle('active', listMode); sync(); });
+      sync();
+    });
+  </script>
+  <!-- data.js must be present in the same folder (generated by tools/generate_data_js.py) -->
+</head>
+<body>
+  <header>
+    <h1>Punk Zines Viewer</h1>
+    <div class="sub">Offline-friendly • Uses local data.js • Decade filters • Search • Timeline</div>
+  </header>
+  <main>
+    <div class="row">
+      <div class="search"><input id="q" placeholder="Search name, band, location, year, tag, creator..." /></div>
+      <div class="filters">
+        <button data-decade="all" class="active">All</button>
+        <button data-decade="1970">1970s</button>
+        <button data-decade="1980">1980s</button>
+        <button data-decade="1990">1990s</button>
+        <button data-decade="2000">2000s+</button>
+        <button id="mode" title="Toggle list/grid">List</button>
+      </div>
+    </div>
+
+    <div id="stats" class="stats"></div>
+
+    <section class="panel" aria-label="Timeline">
+      <canvas id="timeline"></canvas>
+    </section>
+
+    <section id="grid" class="grid" aria-label="Results"></section>
+  </main>
+  <div id="lightbox" class="lb" role="dialog" aria-modal="true" aria-label="Zine image">
+    <div class="lb-box">
+      <div class="lb-head">
+        <div id="lb-title" class="lb-title">Zine</div>
+        <div class="lb-actions">
+          <button onclick="navLightbox(-1)" title="Previous">⟨</button>
+          <button onclick="navLightbox(1)" title="Next">⟩</button>
+          <a id="lb-origin" href="#" rel="noopener" title="View original">View Original ↗</a>
+          <button onclick="closeLightbox()" title="Close">Close ✕</button>
+        </div>
+      </div>
+      <div class="lb-img"><img id="lb-image" alt=""></div>
+      <div class="lb-foot"><span>Tip: use ← → or Esc</span><span class="lb-id">ID: <span id="lb-idval">—</span><button onclick="(async()=>{try{await navigator.clipboard.writeText(document.getElementById('lb-idval').textContent||'');}catch(e){const r=prompt('Copy ID:',document.getElementById('lb-idval').textContent||'');}})()">Copy ID</button></span></div>
+    </div>
+  </div>
+</body>
+ </html>

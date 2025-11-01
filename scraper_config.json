@@ -1,0 +1,222 @@
+{
+  "scraper_settings": {
+    "max_results_per_query": 30,
+    "rate_limit_seconds": 2,
+    "download_images": true,
+    "update_existing": false,
+    "skip_duplicates": true
+  },
+
+  "collections": {
+    "internet_archive": {
+      "enabled": true,
+      "collections": [
+        "zines",
+        "misczinespunk",
+        "punkplanet",
+        "maximumrnr",
+        "riot_grrrl_collection"
+      ]
+    }
+  },
+
+  "priority_searches": [
+    {
+      "name": "Maximum Rocknroll Collection",
+      "query": "Maximum Rocknroll",
+      "collection": "maximumrnr",
+      "max_results": 100,
+      "enabled": true
+    },
+    {
+      "name": "Punk Planet Archive",
+      "query": "punk planet",
+      "collection": "punkplanet",
+      "max_results": 50,
+      "enabled": true
+    },
+    {
+      "name": "Riot Grrrl Zines",
+      "query": "riot grrrl OR bikini kill OR kathleen hanna",
+      "collection": "riot_grrrl_collection",
+      "max_results": 50,
+      "enabled": true
+    },
+    {
+      "name": "UK First Wave Punk",
+      "query": "(sniffin glue OR ripped torn OR jamming OR chainsaw) AND (1976 OR 1977 OR 1978)",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "US Hardcore Zines",
+      "query": "(flipside OR touch and go OR forced exposure OR suburban voice) AND hardcore",
+      "max_results": 40,
+      "enabled": true
+    },
+    {
+      "name": "Anarcho Punk",
+      "query": "anarcho punk OR crass OR profane existence",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "Queercore/Homocore",
+      "query": "homocore OR queercore OR J.D.s OR outpunk",
+      "max_results": 25,
+      "enabled": true
+    },
+    {
+      "name": "International Punk Zines",
+      "query": "(punk fanzine OR punk zine) AND (japan OR germany OR brazil OR australia OR france)",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "Regional US Scenes",
+      "query": "(boston OR minneapolis OR detroit OR chicago OR washington dc) AND (punk zine OR hardcore fanzine)",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "Cometbus & Personal Zines",
+      "query": "cometbus OR slug lettuce OR your flesh OR motorbooty",
+      "max_results": 20,
+      "enabled": true
+    }
+    ,
+    {
+      "name": "Cometbus (targeted)",
+      "query": "title:Cometbus OR subject:Cometbus",
+      "max_results": 80,
+      "enabled": true
+    },
+    {
+      "name": "Your Flesh (targeted)",
+      "query": "(\"Your Flesh\") AND (zine OR fanzine)",
+      "max_results": 80,
+      "enabled": true
+    },
+    {
+      "name": "Slug & Lettuce",
+      "query": "(\"Slug & Lettuce\" OR \"Slug and Lettuce\") AND (zine OR fanzine)",
+      "max_results": 80,
+      "enabled": true
+    },
+    {
+      "name": "Ben Is Dead",
+      "query": "\"Ben is Dead\" AND (zine OR fanzine)",
+      "max_results": 60,
+      "enabled": true
+    },
+    {
+      "name": "Forced Exposure",
+      "query": "\"Forced Exposure\" AND (zine OR fanzine)",
+      "max_results": 100,
+      "enabled": true
+    },
+    {
+      "name": "Touch and Go",
+      "query": "\"Touch and Go\" AND (zine OR fanzine)",
+      "max_results": 100,
+      "enabled": true
+    },
+    {
+      "name": "No Mag (LA)",
+      "query": "\"No Mag\" AND (punk OR zine OR fanzine)",
+      "max_results": 60,
+      "enabled": true
+    },
+    {
+      "name": "Damage (LA)",
+      "query": "title:Damage AND (punk OR \"LA punk\")",
+      "max_results": 60,
+      "enabled": true
+    },
+    {
+      "name": "Chainsaw (UK)",
+      "query": "Chainsaw AND (zine OR fanzine) AND (punk)",
+      "max_results": 60,
+      "enabled": true
+    },
+    {
+      "name": "Kill Your Pet Puppy (UK)",
+      "query": "\"Kill Your Pet Puppy\" OR KYPP",
+      "max_results": 60,
+      "enabled": true
+    },
+    {
+      "name": "Ripped & Torn (UK)",
+      "query": "\"Ripped & Torn\" AND (zine OR fanzine)",
+      "max_results": 60,
+      "enabled": true
+    },
+    {
+      "name": "Jamming (UK)",
+      "query": "title:Jamming AND (zine OR fanzine) AND (punk)",
+      "max_results": 50,
+      "enabled": true
+    },
+    {
+      "name": "Homocore / Queercore (targeted)",
+      "query": "(Homocore OR \"J.D.s\" OR Outpunk) AND (zine OR fanzine)",
+      "max_results": 120,
+      "enabled": true
+    },
+    {
+      "name": "International (Spanish/Portuguese)",
+      "query": "((fanzine OR fanzin OR zine) AND punk) AND (es OR español OR spain OR mexico OR chile OR argentina OR brasil OR brasileiro)",
+      "max_results": 150,
+      "enabled": true
+    },
+    {
+      "name": "International (German/French/Italian)",
+      "query": "(fanzine AND punk) AND (deutsch OR germany OR france OR français OR italiana OR italia)",
+      "max_results": 150,
+      "enabled": true
+    },
+    {
+      "name": "International (Japan)",
+      "query": "(punk AND zine) OR (El Zine)",
+      "max_results": 120,
+      "enabled": true
+    },
+    {
+      "name": "Burn Collector (targeted)",
+      "query": "(\"Burn Collector\" AND (zine OR fanzine)) OR (\"Al Burian\" AND (zine OR fanzine))",
+      "max_results": 120,
+      "enabled": true
+    }
+  ],
+
+  "search_filters": {
+    "year_range": {
+      "min": 1975,
+      "max": 2025
+    },
+    "exclude_mediatypes": [
+      "movies",
+      "audio",
+      "software"
+    ],
+    "prefer_mediatypes": [
+      "texts",
+      "image"
+    ]
+  },
+
+  "metadata_extraction": {
+    "extract_bands": true,
+    "extract_location": true,
+    "extract_year": true,
+    "parse_issue_numbers": true,
+    "identify_movements": true
+  },
+
+  "output_settings": {
+    "save_database": true,
+    "generate_csv": true,
+    "create_backup": true,
+    "update_viewer": false
+  }
+}

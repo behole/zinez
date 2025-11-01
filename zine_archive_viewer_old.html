@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punk Zine Visual Archive - Searchable Database</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #ff0066;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #ff0066;
+            text-shadow: 2px 2px 4px rgba(255,0,102,0.5);
+        }
+        
+        .subtitle {
+            color: #aaa;
+            margin-top: 10px;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            background: #111;
+            color: #fff;
+            border: 2px solid #ff0066;
+            outline: none;
+            font-family: inherit;
+        }
+        
+        .search-box:focus {
+            box-shadow: 0 0 10px rgba(255,0,102,0.5);
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            background: #222;
+            color: #fff;
+            border: 1px solid #666;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover {
+            background: #ff0066;
+            border-color: #ff0066;
+        }
+        
+        .filter-btn.active {
+            background: #ff0066;
+            border-color: #ff0066;
+        }
+        
+        .stats {
+            text-align: center;
+            margin: 20px 0;
+            color: #ff0066;
+        }
+        
+        .zine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .zine-card {
+            background: #111;
+            border: 2px solid #333;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .zine-card:hover {
+            border-color: #ff0066;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255,0,102,0.3);
+        }
+        
+        .zine-title {
+            font-size: 1.4em;
+            color: #ff0066;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .zine-meta {
+            color: #888;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+        
+        .zine-description {
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .zine-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .tag {
+            background: #222;
+            color: #ff0066;
+            padding: 3px 8px;
+            font-size: 0.8em;
+            border: 1px solid #444;
+        }
+        
+        .zine-link {
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        
+        .zine-link:hover {
+            text-decoration: underline;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+                letter-spacing: 2px;
+            }
+            
+            .zine-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Punk Zine Archive</h1>
+        <div class="subtitle">Searchable Visual Database of Punk Zines (1976-2019)</div>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" class="search-box" id="searchInput" 
+               placeholder="Search by name, band, year, location, tags...">
+        
+        <div class="filters">
+            <button class="filter-btn" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="1970s">1970s</button>
+            <button class="filter-btn" data-filter="1980s">1980s</button>
+            <button class="filter-btn" data-filter="1990s">1990s</button>
+            <button class="filter-btn" data-filter="2000s">2000s+</button>
+            <button class="filter-btn" data-filter="UK">UK</button>
+            <button class="filter-btn" data-filter="USA">USA</button>
+            <button class="filter-btn" data-filter="riot grrrl">Riot Grrrl</button>
+            <button class="filter-btn" data-filter="hardcore">Hardcore</button>
+            <button class="filter-btn" data-filter="DIY">DIY</button>
+        </div>
+    </div>
+    
+    <div class="stats" id="stats">Loading database...</div>
+    
+    <div class="zine-grid" id="zineGrid">
+        <!-- Zines will be loaded here -->
+    </div>
+    
+    <script>
+        let zinesData = [];
+        let filteredZines = [];
+        let currentFilter = 'all';
+        
+        // Load the database
+        async function loadDatabase() {
+            try {
+                const response = await fetch('punk_zines_database.json');
+                const data = await response.json();
+                zinesData = data.zines;
+                filteredZines = [...zinesData];
+                displayZines();
+                updateStats();
+            } catch (error) {
+                console.error('Error loading database:', error);
+                document.getElementById('stats').textContent = 'Error loading database';
+            }
+        }
+        
+        // Display zines
+        function displayZines() {
+            const grid = document.getElementById('zineGrid');
+            
+            if (filteredZines.length === 0) {
+                grid.innerHTML = '<div class="no-results">No zines found matching your criteria</div>';
+                return;
+            }
+            
+            grid.innerHTML = filteredZines.map(zine => `
+                <div class="zine-card">
+                    <div class="zine-title">
+                        ${zine.zine_name} ${zine.issue_number ? '#' + zine.issue_number : ''}
+                    </div>
+                    <div class="zine-meta">
+                        ${zine.year} • ${zine.location} ${zine.circulation ? '• ' + zine.circulation + ' copies' : ''}
+                    </div>
+                    <div class="zine-description">${zine.description}</div>
+                    ${zine.bands_featured && zine.bands_featured.length > 0 ? 
+                        `<div class="zine-meta">Bands: ${zine.bands_featured.join(', ')}</div>` : ''}
+                    ${zine.creators ? `<div class="zine-meta">By: ${zine.creators}</div>` : ''}
+                    <div class="zine-tags">
+                        ${zine.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    ${zine.image_url && zine.image_url !== 'Not directly available' ? 
+                        `<a href="${zine.image_url}" target="_blank" class="zine-link">View Source →</a>` : 
+                        `<span style="color: #666; font-size: 0.9em;">Image source: ${zine.archive_source}</span>`}
+                </div>
+            `).join('');
+        }
+        
+        // Update stats
+        function updateStats() {
+            const stats = document.getElementById('stats');
+            stats.textContent = `Showing ${filteredZines.length} of ${zinesData.length} zines`;
+        }
+        
+        // Search function
+        function searchZines(query) {
+            if (!query || query === '') {
+                if (currentFilter === 'all') {
+                    filteredZines = [...zinesData];
+                } else {
+                    filterZines(currentFilter);
+                    return;
+                }
+            } else {
+                const searchTerm = query.toLowerCase();
+                filteredZines = zinesData.filter(zine => {
+                    return (
+                        zine.zine_name.toLowerCase().includes(searchTerm) ||
+                        zine.description.toLowerCase().includes(searchTerm) ||
+                        zine.location.toLowerCase().includes(searchTerm) ||
+                        (zine.year && zine.year.toString().includes(searchTerm)) ||
+                        (zine.creators && zine.creators.toLowerCase().includes(searchTerm)) ||
+                        (zine.bands_featured && zine.bands_featured.some(band => 
+                            band.toLowerCase().includes(searchTerm))) ||
+                        zine.tags.some(tag => tag.toLowerCase().includes(searchTerm)) ||
+                        (zine.text_content && zine.text_content.toLowerCase().includes(searchTerm))
+                    );
+                });
+                
+                // Apply current filter on top of search
+                if (currentFilter !== 'all') {
+                    filteredZines = filteredZines.filter(zine => {
+                        if (currentFilter === '1970s') return zine.year && zine.year >= 1970 && zine.year < 1980;
+                        if (currentFilter === '1980s') return zine.year && zine.year >= 1980 && zine.year < 1990;
+                        if (currentFilter === '1990s') return zine.year && zine.year >= 1990 && zine.year < 2000;
+                        if (currentFilter === '2000s') return zine.year && zine.year >= 2000;
+                        return zine.tags.some(tag => tag.toLowerCase().includes(currentFilter.toLowerCase())) ||
+                               zine.location.toLowerCase().includes(currentFilter.toLowerCase());
+                    });
+                }
+            }
+            displayZines();
+            updateStats();
+        }
+        
+        // Filter function
+        function filterZines(filter) {
+            currentFilter = filter;
+            const searchQuery = document.getElementById('searchInput').value;
+            
+            if (filter === 'all') {
+                filteredZines = [...zinesData];
+            } else if (filter === '1970s') {
+                filteredZines = zinesData.filter(zine => zine.year && zine.year >= 1970 && zine.year < 1980);
+            } else if (filter === '1980s') {
+                filteredZines = zinesData.filter(zine => zine.year && zine.year >= 1980 && zine.year < 1990);
+            } else if (filter === '1990s') {
+                filteredZines = zinesData.filter(zine => zine.year && zine.year >= 1990 && zine.year < 2000);
+            } else if (filter === '2000s') {
+                filteredZines = zinesData.filter(zine => zine.year && zine.year >= 2000);
+            } else {
+                filteredZines = zinesData.filter(zine => 
+                    zine.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())) ||
+                    zine.location.toLowerCase().includes(filter.toLowerCase())
+                );
+            }
+            
+            // Apply search on top of filter if there's a search query
+            if (searchQuery) {
+                searchZines(searchQuery);
+                return;
+            }
+            
+            displayZines();
+            updateStats();
+        }
+        
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchZines(e.target.value);
+        });
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                filterZines(e.target.dataset.filter);
+            });
+        });
+        
+        // Initialize
+        document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+        loadDatabase();
+    </script>
+</body>
+</html>
