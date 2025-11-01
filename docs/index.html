@@ -63,21 +63,22 @@
     }
     function decadeOf(y){ if(!y) return null; return Math.floor(y/10)*10 }
     function thumbFor(e){
-      // Use local images from docs/images/ directory
-      if(e.image_url && /^images\//i.test(e.image_url)){
-        return e.image_url; // Path is already correct relative to docs/
-      }
+      // For grid: use IA thumbnail service for faster loading, then local images
       if(e.ia_thumb) return e.ia_thumb;
+      if(e.image_url && /^images\//i.test(e.image_url)){
+        return e.image_url; // Local image path
+      }
       if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
       return null;
     }
     function fullImageFor(e){
-      // Use local high-res images from docs/images/ directory
+      // For lightbox: ALWAYS use full local images, never thumbnails
       if(e.image_url && /^images\//i.test(e.image_url)){
-        return e.image_url; // Path is already correct relative to docs/
+        return e.image_url; // Full-size local image
       }
       if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
-      return thumbFor(e);
+      // Don't fall back to thumbFor - we want full images only
+      return null;
     }
 
     // State
