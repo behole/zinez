@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "punk_zines_database.json"
-OUT_DIR = ROOT / "viewer"
+OUT_DIR = ROOT / "docs"
 OUT_PATH = OUT_DIR / "data.js"
 
 
@@ -91,6 +91,7 @@ def main() -> None:
             "image_url": img_url,
             "local_image": local_image,
             "ia_item_url": z.get("ia_item_url"),
+            "ia_download_url": z.get("ia_download_url"),
             "ia_thumb": derive_ia_thumb(z.get("ia_item_url")),
         }
         minimized.append(entry)
