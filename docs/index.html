@@ -72,12 +72,21 @@
       return null;
     }
     function fullImageFor(e){
-      // For lightbox: ALWAYS use full local images, never thumbnails
+      // For lightbox: Use IA's high-res image service for best quality
+      // IA serves images at: https://archive.org/services/img/{identifier}?page=0&scale=4
+      if(e.ia_item_url){
+        const match = e.ia_item_url.match(/\/details\/([^\/\?]+)/);
+        if(match){
+          const identifier = match[1];
+          // scale=4 gives us ~2000px images, scale=6 for even larger
+          return `https://archive.org/services/img/${identifier}?scale=6`;
+        }
+      }
+      // Fallback to local image
       if(e.image_url && /^images\//i.test(e.image_url)){
-        return e.image_url; // Full-size local image
+        return e.image_url;
       }
       if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
-      // Don't fall back to thumbFor - we want full images only
       return null;
     }
 
