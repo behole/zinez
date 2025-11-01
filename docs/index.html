@@ -189,6 +189,16 @@
       const imgel = document.getElementById('lb-image');
       if(imgel){ if(img){ imgel.src = img; imgel.alt = title; } else { imgel.removeAttribute('src'); imgel.alt = 'No image'; } }
       const link = document.getElementById('lb-origin'); if(link){ link.href = href; link.target = '_blank'; }
+      const dlLink = document.getElementById('lb-download');
+      if(dlLink){
+        if(img){
+          dlLink.href = img;
+          dlLink.style.display = '';
+          dlLink.download = (e.id || 'zine') + '.jpg';
+        } else {
+          dlLink.style.display = 'none';
+        }
+      }
       const idEl = document.getElementById('lb-idval'); if(idEl){ idEl.textContent = e.id || '(no id)'; }
       const lb = document.getElementById('lightbox'); if(lb) lb.classList.add('open');
     }
@@ -249,6 +259,7 @@
         <div class="lb-actions">
           <button onclick="navLightbox(-1)" title="Previous">⟨</button>
           <button onclick="navLightbox(1)" title="Next">⟩</button>
+          <a id="lb-download" href="#" download="zine.jpg" title="Download high-res image">Download ⬇</a>
           <a id="lb-origin" href="#" rel="noopener" title="View original">View Original ↗</a>
           <button onclick="closeLightbox()" title="Close">Close ✕</button>
         </div>
