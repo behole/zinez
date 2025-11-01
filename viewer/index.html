@@ -68,6 +68,18 @@
       if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
       return null;
     }
+    function fullImageFor(e){
+      // Try to get full-size image for lightbox
+      if(e.local_image) return e.local_image;
+      if(e.ia_download_url && e.image_url && /^images\//i.test(e.image_url)){
+        // For IA items with local image paths, construct full URL
+        const filename = e.image_url.replace('images/', '');
+        return `${e.ia_download_url}/${filename}`;
+      }
+      // Fall back to original image_url or thumbnail
+      if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
+      return thumbFor(e);
+    }
 
     // State
     const ALL = (window.ZINES||[]).map(z=>({
@@ -165,7 +177,7 @@
     function openLightbox(arr, idx){
       LB_DATA = arr; LB_IDX = idx;
       const e = arr[idx];
-      const img = thumbFor(e);
+      const img = fullImageFor(e); // Use full-size image for lightbox
       const title = [e.zine_name, e.issue_number && `#${e.issue_number}`].filter(Boolean).join(' ');
       const href = e.ia_item_url || e.archive_source || e.image_url || '#';
       // inject
