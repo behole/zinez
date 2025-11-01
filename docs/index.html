@@ -63,8 +63,13 @@
     }
     function decadeOf(y){ if(!y) return null; return Math.floor(y/10)*10 }
     function thumbFor(e){
-      if(e.local_image) return e.local_image; // not used yet, placeholder for future
+      if(e.local_image) return e.local_image;
       if(e.ia_thumb) return e.ia_thumb;
+      // Construct IA download URL from local path if available
+      if(e.ia_download_url && e.image_url && /^images\//i.test(e.image_url)){
+        const filename = e.image_url.replace('images/', '');
+        return `${e.ia_download_url}/${filename}`;
+      }
       if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
       return null;
     }
