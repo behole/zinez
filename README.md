@@ -2,7 +2,7 @@
 ## A Searchable Collection of Punk Zine Covers and Images (1976-2019)
 
 Created: October 28, 2025
-Last Updated: October 29, 2025
+Last Updated: November 1, 2025
 
 ## 🆕 What's New - Bidirectional Internet Archive Integration!
 
@@ -10,7 +10,7 @@ Last Updated: October 29, 2025
 
 - **📥 Scrape FROM IA** with proper attribution and source tracking
 - **📤 Contribute TO IA** to expand the public archive
-- **1,055+ zines** with enhanced metadata
+- **3,565 zines** with enhanced metadata
 - **23 zines ready** to contribute back to Internet Archive
 
 See [BIDIRECTIONAL_WORKFLOW.md](BIDIRECTIONAL_WORKFLOW.md) for the complete guide!
@@ -27,7 +27,7 @@ python ia_contributor.py --prepare
 ## 📁 Project Contents
 
 ### Database Files
-- **punk_zines_database.json** - Complete database with 1,055+ entries (v2.0 schema)
+- **punk_zines_database.json** - Complete database with 3,565 entries (v2.0 schema)
 - **punk_zines_database.csv** - Same database in CSV format for easy import
 - **zine_archive_viewer.html** - Interactive HTML viewer with search and filter capabilities
 
@@ -37,7 +37,7 @@ python ia_contributor.py --prepare
 - **update_database_schema.py** - Schema updater for v2.0 features
 - **batch_scraper.py** - Batch processor for multiple searches
 - **scraper_config.json** - Configuration with 10 priority search queries
-- **images/** - Downloaded cover images (1,022 and growing!)
+- **images/** - Downloaded cover images (3,987 images!)
 - **ia_contributions/** - Prepared packages for uploading to IA
 
 ### Documentation
@@ -51,7 +51,7 @@ python ia_contributor.py --prepare
 ### Directory Structure
 ```
 punk-zines-research/
-├── punk_zines_database.json    # Main database (1,055+ entries, v2.0 schema)
+├── punk_zines_database.json    # Main database (3,565 entries, v2.0 schema)
 ├── punk_zines_database.csv     # CSV version
 ├── archive_scraper.py           # Scraper with IA attribution
 ├── ia_contributor.py            # NEW: Upload to Internet Archive
@@ -61,7 +61,7 @@ punk-zines-research/
 ├── cleanup_database.py          # Quality control
 ├── scraper_config.json          # Search configuration
 ├── zine_archive_viewer.html    # Interactive viewer
-├── images/                      # Downloaded covers (1,022 images)
+├── images/                      # Downloaded covers (3,987 images)
 ├── ia_contributions/            # NEW: Prepared IA upload packages
 │   ├── contribution_manifest.json
 │   └── batch_scripts/           # Individual and master upload scripts
@@ -76,16 +76,16 @@ punk-zines-research/
 ## 🔍 Database Features
 
 ### Current Collection Stats (v2.0)
-- **Total Entries**: 1,055+ zines
+- **Total Entries**: 3,565 zines
 - **Time Period**: 1976-2019 (43 years of punk history)
-- **Images**: 1,022 cover images downloaded locally
+- **Images**: 3,987 cover images downloaded locally
 - **Source Breakdown**:
-  - From Internet Archive: 1,030 (97.6%)
-  - From local collections: 21 (2.0%)
-  - From other archives: 4 (0.4%)
+  - From Internet Archive: 3,542+ (99.4%)
+  - From local collections: 21 (0.6%)
+  - From other archives: 2 (0.1%)
 - **Contribution Ready**: 23 zines prepared for upload to IA
-- **Countries**: 15+ including USA, UK, Canada, Japan, Germany, Italy, Mexico, France, Brazil
-- **Key Movements**: First Wave Punk, Hardcore, Riot Grrrl, Anarcho-Punk, Queercore, Straight Edge
+- **Countries**: 20+ including USA, UK, Canada, Japan, Germany, Italy, Mexico, France, Brazil, Netherlands, Spain
+- **Key Movements**: First Wave Punk, Hardcore, Riot Grrrl, Anarcho-Punk, Queercore, Straight Edge, Crust, D-Beat
 
 ### Notable Zines Included
 

@@ -51,16 +51,16 @@ python cleanup_database.py
 
 ---
 
-## 📊 Current Stats (October 29, 2025)
+## 📊 Current Stats (November 1, 2025)
 
 ```
-Total Zines:              1,055
-Cover Images:             1,022
-IA Attribution Links:     1,022
+Total Zines:              3,565
+Cover Images:             3,987
+IA Attribution Links:     3,542+
 Contribution Ready:       23
 Time Period:              1976-2019 (43 years)
-Countries:                15+
-Database Version:         2.0
+Countries:                20+
+Database Version:         2.1
 ```
 
 ---
@@ -68,7 +68,7 @@ Database Version:         2.0
 ## 📁 Key Files
 
 ### Database
-- `punk_zines_database.json` - Main database (1,055 entries)
+- `punk_zines_database.json` - Main database (3,565 entries)
 - `punk_zines_database.csv` - CSV export
 
 ### Tools
@@ -177,11 +177,11 @@ Tip: After large imports, run `python cleanup_database.py`.
 
 | Type | Count | % | Example |
 |------|-------|---|---------|
-| internet_archive | 1,030 | 97.6% | Most entries |
-| local_collection | 21 | 2.0% | Physical zines |
-| other_archive | 2 | 0.2% | eBay refs |
-| flickr | 1 | 0.1% | Photo collections |
-| institutional_archive | 1 | 0.1% | Museums |
+| internet_archive | 3,542+ | 99.4% | Most entries |
+| local_collection | 21 | 0.6% | Physical zines |
+| other_archive | 2 | 0.1% | eBay refs |
+| flickr | <1% | <0.1% | Photo collections |
+| institutional_archive | <1% | <0.1% | Museums |
 
 ---
 
@@ -286,13 +286,5 @@ This is punk rock archiving: DIY, collaborative, and free for all. 🤘
 
 ---
 
-*Last updated: October 29, 2025*
-*Version: 2.0*
-### Static Viewer (Offline-Friendly)
-```bash
-# Generate viewer/data.js from the JSON database
-python tools/generate_data_js.py
-
-# Open the viewer (double-click in Finder, or)
-open viewer/index.html
-```
+*Last updated: November 1, 2025*
+*Version: 2.1*
