@@ -63,25 +63,20 @@
     }
     function decadeOf(y){ if(!y) return null; return Math.floor(y/10)*10 }
     function thumbFor(e){
-      // Prioritize IA URLs for GitHub Pages deployment
-      if(e.ia_thumb) return e.ia_thumb;
-      // Construct IA download URL from local path if available
-      if(e.ia_download_url && e.image_url && /^images\//i.test(e.image_url)){
-        const filename = e.image_url.replace('images/', '');
-        return `${e.ia_download_url}/${filename}`;
+      // Use local images from docs/images/ directory
+      if(e.image_url && /^images\//i.test(e.image_url)){
+        return e.image_url; // Path is already correct relative to docs/
       }
+      if(e.ia_thumb) return e.ia_thumb;
       if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
-      if(e.local_image) return e.local_image; // Fallback for local development
       return null;
     }
     function fullImageFor(e){
-      // Prioritize IA download URLs for full-size images
-      if(e.ia_download_url && e.image_url && /^images\//i.test(e.image_url)){
-        const filename = e.image_url.replace('images/', '');
-        return `${e.ia_download_url}/${filename}`;
+      // Use local high-res images from docs/images/ directory
+      if(e.image_url && /^images\//i.test(e.image_url)){
+        return e.image_url; // Path is already correct relative to docs/
       }
       if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
-      if(e.local_image) return e.local_image; // Fallback for local development
       return thumbFor(e);
     }
 
