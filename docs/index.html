@@ -187,10 +187,19 @@
       const link = document.getElementById('lb-origin'); if(link){ link.href = href; link.target = '_blank'; }
       const dlLink = document.getElementById('lb-download');
       if(dlLink){
-        if(img){
-          dlLink.href = img;
+        // Link to full IA viewer if available, otherwise download local image
+        if(e.ia_item_url){
+          dlLink.href = e.ia_item_url + '/mode/2up';
+          dlLink.removeAttribute('download');
+          dlLink.textContent = 'View Full Scan ↗';
+          dlLink.target = '_blank';
           dlLink.style.display = '';
+        } else if(img){
+          dlLink.href = img;
           dlLink.download = (e.id || 'zine') + '.jpg';
+          dlLink.textContent = 'Download ⬇';
+          dlLink.removeAttribute('target');
+          dlLink.style.display = '';
         } else {
           dlLink.style.display = 'none';
         }
