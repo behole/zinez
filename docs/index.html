@@ -63,7 +63,7 @@
     }
     function decadeOf(y){ if(!y) return null; return Math.floor(y/10)*10 }
     function thumbFor(e){
-      if(e.local_image) return e.local_image;
+      // Prioritize IA URLs for GitHub Pages deployment
       if(e.ia_thumb) return e.ia_thumb;
       // Construct IA download URL from local path if available
       if(e.ia_download_url && e.image_url && /^images\//i.test(e.image_url)){
@@ -71,18 +71,17 @@
         return `${e.ia_download_url}/${filename}`;
       }
       if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
+      if(e.local_image) return e.local_image; // Fallback for local development
       return null;
     }
     function fullImageFor(e){
-      // Try to get full-size image for lightbox
-      if(e.local_image) return e.local_image;
+      // Prioritize IA download URLs for full-size images
       if(e.ia_download_url && e.image_url && /^images\//i.test(e.image_url)){
-        // For IA items with local image paths, construct full URL
         const filename = e.image_url.replace('images/', '');
         return `${e.ia_download_url}/${filename}`;
       }
-      // Fall back to original image_url or thumbnail
       if(e.image_url && /^https?:/i.test(e.image_url)) return e.image_url;
+      if(e.local_image) return e.local_image; // Fallback for local development
       return thumbFor(e);
     }
 
