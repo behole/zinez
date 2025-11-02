@@ -72,17 +72,8 @@
       return null;
     }
     function fullImageFor(e){
-      // For lightbox: Use IA's IIIF server to get high-res page images
-      // Format: https://iiif.archive.org/iiif/3/{identifier}$0/full/max/0/default.jpg
-      if(e.ia_item_url){
-        const match = e.ia_item_url.match(/\/details\/([^\/\?]+)/);
-        if(match){
-          const identifier = match[1];
-          // IIIF gets first page at full resolution (add $0 for page 0)
-          return `https://iiif.archivelab.org/iiif/3/${identifier}$0/full/max/0/default.jpg`;
-        }
-      }
-      // Fallback to local image
+      // For lightbox: Use local images (they're small but reliable)
+      // Best option is to click "View on IA" for full scans
       if(e.image_url && /^images\//i.test(e.image_url)){
         return e.image_url;
       }
