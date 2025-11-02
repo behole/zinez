@@ -269,9 +269,19 @@ class PunkZineScraper:
                 # Keep only textual items (zines are usually texts) and allow images
                 mt_raw = result.get('mediatype')
                 if isinstance(mt_raw, list):
-                    mtypes = {str(m).lower() for m in mt_raw if isinstance(m, (str, bytes))}
+                    mtypes = set()
+                    for m in mt_raw:
+                        if isinstance(m, str):
+                            mtypes.add(m.lower())
+                        elif isinstance(m, bytes):
+                            mtypes.add(m.decode('utf-8', errors='ignore').lower())
                 else:
-                    mtypes = {str(mt_raw).lower()} if mt_raw else set()
+                    if isinstance(mt_raw, str):
+                        mtypes = {mt_raw.lower()}
+                    elif isinstance(mt_raw, bytes):
+                        mtypes = {mt_raw.decode('utf-8', errors='ignore').lower()}
+                    else:
+                        mtypes = set()
                 if mtypes and not (mtypes & {"texts", "text", "image", "images"}):
                     continue
 

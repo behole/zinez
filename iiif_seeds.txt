@@ -1,5 +1,14 @@
-# Paste IIIF manifest URLs here (one per line). Lines starting with # are ignored.
-# Example (replace with real manifests from Pratt, Barnard, etc.):
-# https://digital.library.example.edu/iiif/ark:/12345/abcde/manifest
-# https://iiif.example.org/presentation/3/manifest.json
+# IIIF Manifest URLs for Punk Zines
+# Add institutional IIIF manifests here (one per line)
+# Lines starting with # are ignored
+
+# TODO: Contact these institutions for IIIF manifest URLs:
+# - Barnard College (archives@barnard.edu, zines@barnard.edu)
+# - Pratt Institute
+# - UCLA Library Special Collections
+# - University of Maryland Archives
+
+# Example format (replace with actual manifests):
+# https://digital.library.barnard.edu/iiif/ark:/12345/zine123/manifest
+# https://digitalcollections.pratt.edu/iiif/presentation/punk-zine-001/manifest.json
 
