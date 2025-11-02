@@ -43,8 +43,9 @@
     .lb-title{font-size:14px;color:#eee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .lb-actions{display:flex;gap:8px}
     .lb-actions a, .lb-actions button{border:1px solid #333;background:#141414;color:#eee;border-radius:6px;padding:6px 10px;cursor:pointer;text-decoration:none}
-    .lb-img{display:grid;place-items:center;background:#0a0a0a}
-    .lb-img img{max-width:100%;max-height:70vh}
+    .lb-img{display:grid;place-items:center;background:#0a0a0a;overflow:hidden;position:relative;cursor:grab}
+    .lb-img.dragging{cursor:grabbing}
+    .lb-img img{max-width:100%;max-height:70vh;transition:transform 0.2s ease;transform-origin:center center}
     .lb-foot{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:8px 12px;border-top:1px solid #222;color:#999;font-size:12px}
     .lb-id{color:#bbb;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
     .lb-id button{margin-left:8px;border:1px solid #333;background:#141414;color:#eee;border-radius:6px;padding:3px 8px;cursor:pointer}
@@ -181,14 +182,24 @@
       renderStats(res); renderGrid(res); renderTimeline();
     }
 
-    // Lightbox logic
+    // Lightbox logic with zoom/pan
     let LB_DATA = []; let LB_IDX = 0;
+    let zoomLevel = 1; let panX = 0; let panY = 0;
+    let isDragging = false; let dragStartX = 0; let dragStartY = 0;
+
+    function applyTransform(){
+      const img = document.getElementById('lb-image');
+      if(img) img.style.transform = `scale(${zoomLevel}) translate(${panX}px, ${panY}px)`;
+    }
+    function zoomIn(){ zoomLevel = Math.min(zoomLevel * 1.3, 10); applyTransform(); }
+    function zoomOut(){ zoomLevel = Math.max(zoomLevel / 1.3, 1); if(zoomLevel === 1){ panX = 0; panY = 0; } applyTransform(); }
+    function resetZoom(){ zoomLevel = 1; panX = 0; panY = 0; applyTransform(); }
+
     function openLightbox(arr, idx){
       LB_DATA = arr; LB_IDX = idx;
       const e = arr[idx];
-      const img = fullImageFor(e); // Use full-size image for lightbox
+      const img = fullImageFor(e);
       const title = [e.zine_name, e.issue_number && `#${e.issue_number}`].filter(Boolean).join(' ');
-      // Link to IA book viewer for full scans, or fallback to item page
       const href = e.ia_item_url ? e.ia_item_url + '/mode/2up' : (e.archive_source || e.image_url || '#');
       // inject
       const t = document.getElementById('lb-title'); if(t) t.textContent = title || 'Zine';
@@ -196,10 +207,44 @@
       if(imgel){ if(img){ imgel.src = img; imgel.alt = title; } else { imgel.removeAttribute('src'); imgel.alt = 'No image'; } }
       const link = document.getElementById('lb-origin'); if(link){ link.href = href; }
       const idEl = document.getElementById('lb-idval'); if(idEl){ idEl.textContent = e.id || '(no id)'; }
+      resetZoom(); // Reset zoom when opening new image
       const lb = document.getElementById('lightbox'); if(lb) lb.classList.add('open');
     }
-    function closeLightbox(){ const lb = document.getElementById('lightbox'); if(lb) lb.classList.remove('open'); }
+    function closeLightbox(){ const lb = document.getElementById('lightbox'); if(lb) lb.classList.remove('open'); resetZoom(); }
     function navLightbox(d){ if(!LB_DATA.length) return; LB_IDX = (LB_IDX + d + LB_DATA.length) % LB_DATA.length; openLightbox(LB_DATA, LB_IDX); }
+
+    // Pan/drag event handlers
+    function setupPanHandlers(){
+      const lbImg = document.querySelector('.lb-img');
+      if(!lbImg) return;
+
+      lbImg.addEventListener('mousedown', (e)=>{
+        if(zoomLevel > 1){
+          isDragging = true;
+          dragStartX = e.clientX - panX;
+          dragStartY = e.clientY - panY;
+          lbImg.classList.add('dragging');
+          e.preventDefault();
+        }
+      });
+
+      document.addEventListener('mousemove', (e)=>{
+        if(isDragging){
+          panX = e.clientX - dragStartX;
+          panY = e.clientY - dragStartY;
+          applyTransform();
+        }
+      });
+
+      document.addEventListener('mouseup', ()=>{
+        if(isDragging){
+          isDragging = false;
+          const lbImg = document.querySelector('.lb-img');
+          if(lbImg) lbImg.classList.remove('dragging');
+        }
+      });
+    }
+
     document.addEventListener('keydown', (e)=>{
       const lb = document.getElementById('lightbox');
       if(!lb || !lb.classList.contains('open')) return;
@@ -217,6 +262,7 @@
         });
       });
       document.getElementById('mode').addEventListener('click', (e)=>{ listMode = !listMode; e.target.classList.toggle('active', listMode); sync(); });
+      setupPanHandlers(); // Enable zoom/pan drag functionality
       sync();
     });
   </script>
@@ -255,6 +301,9 @@
         <div class="lb-actions">
           <button onclick="navLightbox(-1)" title="Previous">⟨</button>
           <button onclick="navLightbox(1)" title="Next">⟩</button>
+          <button onclick="zoomIn()" title="Zoom in">+</button>
+          <button onclick="zoomOut()" title="Zoom out">−</button>
+          <button onclick="resetZoom()" title="Reset zoom">Reset</button>
           <a id="lb-origin" href="#" rel="noopener" target="_blank" title="View full scan on Internet Archive">View on IA ↗</a>
           <button onclick="closeLightbox()" title="Close">Close ✕</button>
         </div>
