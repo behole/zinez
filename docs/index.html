@@ -72,8 +72,17 @@
       return null;
     }
     function fullImageFor(e){
-      // For lightbox: Use local images (they're small but reliable)
-      // Best option is to click "View on IA" for full scans
+      // For lightbox: Use IA's BookReader page API for high-res images
+      // Format: https://archive.org/download/{id}/page/n0_w3000.jpg
+      if(e.ia_item_url){
+        const match = e.ia_item_url.match(/\/details\/([^\/\?]+)/);
+        if(match){
+          const identifier = match[1];
+          // n0 = page 0 (cover), w3000 = 3000px width (high res)
+          return `https://archive.org/download/${identifier}/page/n0_w3000.jpg`;
+        }
+      }
+      // Fallback to local images
       if(e.image_url && /^images\//i.test(e.image_url)){
         return e.image_url;
       }
