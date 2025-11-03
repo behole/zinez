@@ -275,6 +275,7 @@ class PunkZineScraper:
                             mtypes.add(m.lower())
                         elif isinstance(m, bytes):
                             mtypes.add(m.decode('utf-8', errors='ignore').lower())
+                        # Ignore other types (None, dict, etc.)
                 else:
                     if isinstance(mt_raw, str):
                         mtypes = {mt_raw.lower()}
@@ -282,7 +283,10 @@ class PunkZineScraper:
                         mtypes = {mt_raw.decode('utf-8', errors='ignore').lower()}
                     else:
                         mtypes = set()
-                if mtypes and not (mtypes & {"texts", "text", "image", "images"}):
+
+                # Skip if mediatype is present but not texts/images
+                if mtypes and not (mtypes & {"texts", "text", "image", "images", "collection"}):
+                    print(f"   ⏭️  Skipping: mediatype {mtypes} not compatible")
                     continue
 
                 print(f"\n📄 Found: {title}")
@@ -300,6 +304,35 @@ class PunkZineScraper:
                     creators = metadata.get('creator', 'Unknown')
                     if isinstance(creators, list):
                         creators = '; '.join(creators)
+
+                    # FILTER 1: Year filter (proto-punk started 1974)
+                    if year:
+                        year_int = int(year)
+                        if year_int < 1974 or year_int > 2025:
+                            print(f"  ⏭️  Skipping: year {year} out of range (1974-2025)")
+                            continue
+
+                    # FILTER 2: Exclude non-punk keywords in title
+                    title_lower = title.lower()
+                    exclude_keywords = [
+                        'newspaper', 'enterprise', 'times', 'gazette', 'herald', 'tribune',
+                        'diary of', 'columbine', 'massacre', 'suicide', 'lynch letter',
+                        'botany', 'botanical', 'horticulture', 'flora', 'plantarum',
+                        'pharmacopoeia', 'toxicology', 'anatomy', 'physiology',
+                        'paxton', 'swenska wetenskaps', 'expédition dans',
+                        'telegraph', 'chronicle', 'journal', 'press', 'bulletin'
+                    ]
+                    if any(keyword in title_lower for keyword in exclude_keywords):
+                        print(f"  ⏭️  Skipping: excluded keyword in title")
+                        continue
+
+                    # FILTER 3: Must have punk/zine keywords in title or description
+                    desc = metadata.get('description', '').lower()
+                    combined_text = f"{title_lower} {desc}"
+                    punk_keywords = ['punk', 'zine', 'fanzine', 'hardcore', 'riot grrrl', 'anarcho', 'diy']
+                    if not any(keyword in combined_text for keyword in punk_keywords):
+                        print(f"  ⏭️  Skipping: no punk/zine keywords found")
+                        continue
 
                     # Generate ID
                     zine_id = self.generate_id(title)
