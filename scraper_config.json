@@ -22,170 +22,254 @@
 
   "priority_searches": [
     {
+      "name": "San Francisco / Bay Area Punk",
+      "query": "(\"San Francisco\" OR \"Bay Area\" OR Gilman OR Berkeley OR \"East Bay\") AND (punk OR hardcore) AND (zine OR fanzine)",
+      "max_results": 50,
+      "enabled": true
+    },
+    {
+      "name": "Washington DC Hardcore",
+      "query": "(\"Washington DC\" OR \"DC hardcore\" OR Dischord OR \"Positive Force\") AND (punk OR hardcore) AND (zine OR fanzine)",
+      "max_results": 50,
+      "enabled": true
+    },
+    {
+      "name": "New York City Punk",
+      "query": "(\"New York\" OR NYC OR CBGB OR \"Lower East Side\" OR \"East Village\") AND punk AND (zine OR fanzine)",
+      "max_results": 50,
+      "enabled": true
+    },
+    {
+      "name": "Los Angeles Punk",
+      "query": "(\"Los Angeles\" OR \"LA punk\" OR Hollywood OR \"Orange County\" OR SST OR Dangerhouse) AND punk AND (zine OR fanzine)",
+      "max_results": 50,
+      "enabled": true
+    },
+    {
+      "name": "Boston Hardcore",
+      "query": "(Boston OR \"Boston hardcore\" OR \"This Is Boston Not LA\") AND (punk OR hardcore) AND (zine OR fanzine)",
+      "max_results": 40,
+      "enabled": true
+    },
+    {
+      "name": "Minneapolis Punk",
+      "query": "(Minneapolis OR \"Twin Cities\" OR Minnesota) AND punk AND (zine OR fanzine)",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "Chicago Punk",
+      "query": "(Chicago OR \"Wax Trax\" OR \"Touch and Go\") AND punk AND (zine OR fanzine)",
+      "max_results": 40,
+      "enabled": true
+    },
+    {
+      "name": "Seattle Punk",
+      "query": "(Seattle OR \"Pacific Northwest\" OR \"Sub Pop\") AND punk AND (zine OR fanzine)",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "Detroit Punk",
+      "query": "(Detroit OR Michigan) AND punk AND (zine OR fanzine)",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "Philadelphia Hardcore",
+      "query": "(Philadelphia OR Philly OR \"Philadelphia hardcore\") AND punk AND (zine OR fanzine)",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "London Punk Scene",
+      "query": "(London OR \"UK punk\" OR \"British punk\") AND (punk OR \"77\") AND (zine OR fanzine)",
+      "max_results": 40,
+      "enabled": true
+    },
+    {
+      "name": "Manchester / Northern UK",
+      "query": "(Manchester OR Buzzcocks OR Factory OR \"Northern England\") AND punk AND (zine OR fanzine)",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "Berlin Punk",
+      "query": "(Berlin OR \"German punk\") AND punk AND (fanzine OR zine)",
+      "max_results": 30,
+      "enabled": true
+    },
+    {
+      "name": "Tokyo / Japanese Punk",
+      "query": "(Tokyo OR Japan OR Japanese) AND punk AND (zine OR fanzine)",
+      "max_results": 40,
+      "enabled": true
+    },
+    {
       "name": "Maximum Rocknroll Collection",
       "query": "Maximum Rocknroll",
       "collection": "maximumrnr",
       "max_results": 100,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Punk Planet Archive",
       "query": "punk planet",
       "collection": "punkplanet",
       "max_results": 50,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Riot Grrrl Zines",
       "query": "riot grrrl OR bikini kill OR kathleen hanna",
       "collection": "riot_grrrl_collection",
       "max_results": 50,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "UK First Wave Punk",
       "query": "(sniffin glue OR ripped torn OR jamming OR chainsaw) AND (1976 OR 1977 OR 1978)",
       "max_results": 30,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "US Hardcore Zines",
       "query": "(flipside OR touch and go OR forced exposure OR suburban voice) AND hardcore",
       "max_results": 40,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Anarcho Punk",
       "query": "anarcho punk OR crass OR profane existence",
       "max_results": 30,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Queercore/Homocore",
       "query": "homocore OR queercore OR J.D.s OR outpunk",
       "max_results": 25,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "International Punk Zines",
       "query": "(punk fanzine OR punk zine) AND (japan OR germany OR brazil OR australia OR france)",
       "max_results": 30,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Regional US Scenes",
       "query": "(boston OR minneapolis OR detroit OR chicago OR washington dc) AND (punk zine OR hardcore fanzine)",
       "max_results": 30,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Cometbus & Personal Zines",
       "query": "cometbus OR slug lettuce OR your flesh OR motorbooty",
       "max_results": 20,
-      "enabled": true
+      "enabled": false
     }
     ,
     {
       "name": "Cometbus (targeted)",
       "query": "title:Cometbus OR subject:Cometbus",
       "max_results": 80,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Your Flesh (targeted)",
       "query": "(\"Your Flesh\") AND (zine OR fanzine)",
       "max_results": 80,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Slug & Lettuce",
       "query": "(\"Slug & Lettuce\" OR \"Slug and Lettuce\") AND (zine OR fanzine)",
       "max_results": 80,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Ben Is Dead",
       "query": "\"Ben is Dead\" AND (zine OR fanzine)",
       "max_results": 60,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Forced Exposure",
       "query": "\"Forced Exposure\" AND (zine OR fanzine)",
       "max_results": 100,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Touch and Go",
       "query": "\"Touch and Go\" AND (zine OR fanzine)",
       "max_results": 100,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "No Mag (LA)",
       "query": "\"No Mag\" AND (punk OR zine OR fanzine)",
       "max_results": 60,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Damage (LA)",
       "query": "title:Damage AND (punk OR \"LA punk\")",
       "max_results": 60,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Chainsaw (UK)",
       "query": "Chainsaw AND (zine OR fanzine) AND (punk)",
       "max_results": 60,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Kill Your Pet Puppy (UK)",
       "query": "\"Kill Your Pet Puppy\" OR KYPP",
       "max_results": 60,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Ripped & Torn (UK)",
       "query": "\"Ripped & Torn\" AND (zine OR fanzine)",
       "max_results": 60,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Jamming (UK)",
       "query": "title:Jamming AND (zine OR fanzine) AND (punk)",
       "max_results": 50,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Homocore / Queercore (targeted)",
       "query": "(Homocore OR \"J.D.s\" OR Outpunk) AND (zine OR fanzine)",
       "max_results": 120,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "International (Spanish/Portuguese)",
       "query": "((fanzine OR fanzin OR zine) AND punk) AND (es OR español OR spain OR mexico OR chile OR argentina OR brasil OR brasileiro)",
       "max_results": 150,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "International (German/French/Italian)",
       "query": "(fanzine AND punk) AND (deutsch OR germany OR france OR français OR italiana OR italia)",
       "max_results": 150,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "International (Japan)",
       "query": "(punk AND zine) OR (El Zine)",
       "max_results": 120,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "Burn Collector (targeted)",
       "query": "(\"Burn Collector\" AND (zine OR fanzine)) OR (\"Al Burian\" AND (zine OR fanzine))",
       "max_results": 120,
-      "enabled": true
+      "enabled": false
     }
   ],
 
