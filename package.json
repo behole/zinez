@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "wrangler dev",
-    "dev:frontend": "vite dev src/frontend",
-    "build": "vite build src/frontend && wrangler deploy --dry-run",
-    "deploy": "vite build src/frontend && wrangler deploy",
+    "dev:frontend": "vite dev",
+    "build": "vite build && wrangler deploy --dry-run",
+    "deploy": "vite build && wrangler deploy",
     "import": "bun run src/api/db/import.ts",
     "db:init": "wrangler d1 execute punk-zines-db --local --file=src/api/db/schema.sql",
     "db:init:remote": "wrangler d1 execute punk-zines-db --file=src/api/db/schema.sql"
