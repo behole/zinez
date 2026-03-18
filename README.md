@@ -1,21 +1,13 @@
 # Punk Zines Visual Archive Database
-## A Searchable Collection of Punk Zine Covers and Images (1976-2019)
+## A Searchable Collection of Punk Zine Covers and Images (1967-2025)
 
 Created: October 28, 2025
-Last Updated: November 1, 2025
+Last Updated: March 17, 2026
 
-## 🆕 What's New - Bidirectional Internet Archive Integration!
+## Overview
 
-**NEW v2.0:** Complete bidirectional workflow with Internet Archive!
+**3,484 punk zines** cataloged with cover images, metadata, and source attribution. Bidirectional Internet Archive integration for scraping and contributing back.
 
-- **📥 Scrape FROM IA** with proper attribution and source tracking
-- **📤 Contribute TO IA** to expand the public archive
-- **3,565 zines** with enhanced metadata
-- **23 zines ready** to contribute back to Internet Archive
-
-See [BIDIRECTIONAL_WORKFLOW.md](BIDIRECTIONAL_WORKFLOW.md) for the complete guide!
-
-Quick start:
 ```bash
 # Scrape FROM Internet Archive
 python archive_scraper.py --search "punk zine"
@@ -24,66 +16,43 @@ python archive_scraper.py --search "punk zine"
 python ia_contributor.py --prepare
 ```
 
-## 📁 Project Contents
+## Project Contents
 
-### Database Files
-- **punk_zines_database.json** - Complete database with 3,565 entries (v2.0 schema)
-- **punk_zines_database.csv** - Same database in CSV format for easy import
-- **zine_archive_viewer.html** - Interactive HTML viewer with search and filter capabilities
+### Database
+- **punk_zines_database.json** - Complete database (3,484 entries, v2.1 schema)
+- **punk_zines_database.csv** - CSV export
+- **docs/index.html** - Interactive web viewer with search, filters, and lightbox
 
-### Bidirectional IA Tools (NEW!)
-- **archive_scraper.py** - Core Internet Archive scraper with enhanced attribution
-- **ia_contributor.py** - Upload non-IA zines back to Internet Archive
-- **update_database_schema.py** - Schema updater for v2.0 features
+### Tools
+- **archive_scraper.py** - Core Internet Archive scraper with attribution
+- **ia_contributor.py** - Upload zines back to Internet Archive
 - **batch_scraper.py** - Batch processor for multiple searches
-- **scraper_config.json** - Configuration with 10 priority search queries
-- **images/** - Downloaded cover images (3,987 images!)
-- **ia_contributions/** - Prepared packages for uploading to IA
+- **wikimedia_scraper.py** - Wikimedia Commons harvester
+- **cleanup_database.py** - Quality control and deduplication
+- **tools/** - Additional harvesters (Flickr, IIIF, DC Punk Archive)
 
 ### Documentation
-- **BIDIRECTIONAL_WORKFLOW.md** - Complete guide to two-way IA integration (NEW!)
-- **SCRAPER_GUIDE.md** - Complete scraper documentation
-- **INTERNET_ARCHIVE_GUIDE.md** - Internet Archive contribution guide
-- **PUNK_ZINES_MASTER_LIST.md** - Master catalog of punk zines with historical context
-- **ADD_MORE_ZINES.md** - Guide for manual additions
-- **README.md** - This file
-
-### Directory Structure
-```
-punk-zines-research/
-├── punk_zines_database.json    # Main database (3,565 entries, v2.0 schema)
-├── punk_zines_database.csv     # CSV version
-├── archive_scraper.py           # Scraper with IA attribution
-├── ia_contributor.py            # NEW: Upload to Internet Archive
-├── update_database_schema.py   # NEW: Schema updater
-├── batch_scraper.py             # Batch processor
-├── aggressive_expansion.py     # Multi-phase expansion
-├── cleanup_database.py          # Quality control
-├── scraper_config.json          # Search configuration
-├── zine_archive_viewer.html    # Interactive viewer
-├── images/                      # Downloaded covers (3,987 images)
-├── ia_contributions/            # NEW: Prepared IA upload packages
-│   ├── contribution_manifest.json
-│   └── batch_scripts/           # Individual and master upload scripts
-├── backups/                     # Database backups
-├── BIDIRECTIONAL_WORKFLOW.md   # NEW: Complete IA integration guide
-├── SCRAPER_GUIDE.md             # Scraper documentation
-├── INTERNET_ARCHIVE_GUIDE.md   # IA contribution guide
-├── PUNK_ZINES_MASTER_LIST.md   # Historical catalog
-└── ADD_MORE_ZINES.md            # Manual addition guide
-```
+- **BIDIRECTIONAL_WORKFLOW.md** - Two-way IA integration guide
+- **SCRAPER_GUIDE.md** - Scraper documentation
+- **INTERNET_ARCHIVE_GUIDE.md** - IA contribution guide
+- **IIIF_COMPLETE_GUIDE.md** - University/museum IIIF harvesting
+- **ADDITIONAL_SOURCES_RESEARCH.md** - Expansion source roadmap
+- **QUICK_REFERENCE.md** - Command cheat sheet
+- **PUNK_ZINES_MASTER_LIST.md** - Historical zine catalog
+- **ADD_MORE_ZINES.md** - Manual addition guide
+- **WIKIMEDIA_QUICKSTART.md** - Wikimedia scraper guide
 
 ## 🔍 Database Features
 
-### Current Collection Stats (v2.0)
-- **Total Entries**: 3,565 zines
-- **Time Period**: 1976-2019 (43 years of punk history)
-- **Images**: 3,987 cover images downloaded locally
+### Current Collection Stats
+- **Total Entries**: 3,484 zines
+- **Time Period**: 1967-2025
+- **Images**: 5,295 cover images downloaded locally
 - **Source Breakdown**:
-  - From Internet Archive: 3,542+ (99.4%)
-  - From local collections: 21 (0.6%)
-  - From other archives: 2 (0.1%)
-- **Contribution Ready**: 23 zines prepared for upload to IA
+  - Internet Archive: 3,247 (93%)
+  - Wikimedia Commons: 170 (5%)
+  - Other archives: 66 (2%)
+  - Local/institutional: 9 (<1%)
 - **Countries**: 20+ including USA, UK, Canada, Japan, Germany, Italy, Mexico, France, Brazil, Netherlands, Spain
 - **Key Movements**: First Wave Punk, Hardcore, Riot Grrrl, Anarcho-Punk, Queercore, Straight Edge, Crust, D-Beat
 
@@ -115,7 +84,7 @@ punk-zines-research/
 - **Punk on Wave** (Japan)
 - **Kill Your Pet Puppy** (UK anarcho-punk)
 
-## 💾 Database Schema (v2.0)
+## Database Schema (v2.1)
 
 Each zine entry contains:
 
@@ -132,7 +101,7 @@ Each zine entry contains:
 - **circulation**: Copies printed (if known)
 - **creators**: Editors/publishers
 
-### NEW: Source Attribution (v2.0)
+### Source Attribution
 - **source_type**: Classification (internet_archive, local_collection, other_archive, etc.)
 - **archive_source**: Where the zine was sourced from
 - **attribution**: Attribution text for proper crediting
@@ -290,4 +259,4 @@ Information compiled from:
 
 *"This is a chord, this is another, this is a third. Now form a band"* - Sideburns, 1977
 
-*Database compiled through web research, October 2025*
+*Database compiled through web research, October 2025. Last cleaned March 2026.*
