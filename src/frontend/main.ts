@@ -1,3 +1,171 @@
 import "./style.css";
+import { fetchZines, type Zine, type ZineListResponse } from "./api";
+import { createFilterState, initFilters } from "./filters";
 
-console.log("Punk Zines Archive loaded");
+const state = createFilterState();
+let currentData: ZineListResponse | null = null;
+let loading = false;
+
+async function sync(): Promise<void> {
+  if (loading) return;
+  loading = true;
+
+  const loader = document.getElementById("loader")!;
+  loader.hidden = false;
+
+  try {
+    currentData = await fetchZines({
+      q: state.q,
+      decade: state.decade,
+      sort: state.sort,
+      page: state.page,
+      limit: 50,
+    });
+
+    renderStats(currentData);
+    renderGrid(currentData.zines);
+  } finally {
+    loading = false;
+    loader.hidden = true;
+  }
+}
+
+function renderStats(data: ZineListResponse): void {
+  const el = document.getElementById("stats")!;
+  el.textContent = `${data.total} zines found · page ${data.page} of ${data.pages}`;
+}
+
+function renderGrid(zines: Zine[]): void {
+  const grid = document.getElementById("grid")!;
+  grid.innerHTML = zines
+    .map(
+      (z) => {
+        const thumb = z.ia_thumb || z.image_url || "";
+        const title = [z.zine_name, z.issue_number && `#${z.issue_number}`].filter(Boolean).join(" ");
+        const locyr = [z.location, z.year].filter(Boolean).join(" · ");
+        const tags = z.tags.slice(0, 4).map((t) => `<span class="tag">${t}</span>`).join("");
+
+        return `<article class="card" data-id="${z.id}">
+          <div class="thumb">${
+            thumb
+              ? `<img data-src="${thumb}" alt="${title}" />`
+              : `<div class="ph">No image</div>`
+          }</div>
+          <div class="meta">
+            <div class="title">${title}</div>
+            <div class="small">${locyr}</div>
+            ${tags ? `<div class="tags">${tags}</div>` : ""}
+          </div>
+        </article>`;
+      }
+    )
+    .join("");
+
+  // Lazy load images
+  observeImages(grid);
+
+  // Infinite scroll — load next page when near bottom
+  setupInfiniteScroll();
+}
+
+function observeImages(container: HTMLElement): void {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+          const src = img.dataset.src;
+          if (src) {
+            img.src = src;
+            img.onload = () => img.classList.add("loaded");
+            img.onerror = () => {
+              img.removeAttribute("src");
+              img.closest(".thumb")!.innerHTML = `<div class="ph">No image</div>`;
+            };
+          }
+          observer.unobserve(img);
+        }
+      });
+    },
+    { rootMargin: "200px" }
+  );
+
+  container.querySelectorAll<HTMLImageElement>("img[data-src]").forEach((img) => {
+    observer.observe(img);
+  });
+}
+
+function setupInfiniteScroll(): void {
+  // Remove existing listener to avoid duplicates
+  window.removeEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", handleScroll);
+}
+
+async function handleScroll(): Promise<void> {
+  if (!currentData || loading) return;
+  if (state.page >= currentData.pages) return;
+
+  const scrollBottom = window.innerHeight + window.scrollY;
+  const docHeight = document.documentElement.scrollHeight;
+
+  if (docHeight - scrollBottom < 400) {
+    state.page++;
+    loading = true;
+    const loader = document.getElementById("loader")!;
+    loader.hidden = false;
+
+    try {
+      const more = await fetchZines({
+        q: state.q,
+        decade: state.decade,
+        sort: state.sort,
+        page: state.page,
+        limit: 50,
+      });
+
+      currentData.page = more.page;
+      currentData.zines = [...currentData.zines, ...more.zines];
+
+      // Append cards instead of replacing
+      const grid = document.getElementById("grid")!;
+      const fragment = document.createElement("div");
+      fragment.innerHTML = more.zines
+        .map((z) => {
+          const thumb = z.ia_thumb || z.image_url || "";
+          const title = [z.zine_name, z.issue_number && `#${z.issue_number}`].filter(Boolean).join(" ");
+          const locyr = [z.location, z.year].filter(Boolean).join(" · ");
+          const tags = z.tags.slice(0, 4).map((t) => `<span class="tag">${t}</span>`).join("");
+
+          return `<article class="card" data-id="${z.id}">
+            <div class="thumb">${
+              thumb
+                ? `<img data-src="${thumb}" alt="${title}" />`
+                : `<div class="ph">No image</div>`
+            }</div>
+            <div class="meta">
+              <div class="title">${title}</div>
+              <div class="small">${locyr}</div>
+              ${tags ? `<div class="tags">${tags}</div>` : ""}
+            </div>
+          </article>`;
+        })
+        .join("");
+
+      while (fragment.firstElementChild) {
+        grid.appendChild(fragment.firstElementChild);
+      }
+
+      observeImages(grid);
+      renderStats(currentData);
+    } finally {
+      loading = false;
+      loader.hidden = true;
+    }
+  }
+}
+
+// Boot
+document.addEventListener("DOMContentLoaded", () => {
+  initFilters(state, () => sync());
+  sync();
+});
