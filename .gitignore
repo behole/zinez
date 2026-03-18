@@ -27,5 +27,12 @@ Thumbs.db
 *~
 images/wikimedia/
 
+# Node
+node_modules/
+dist/
+.wrangler/
+.dev.vars
+bun.lockb
+
 # Worktrees
 .worktrees/

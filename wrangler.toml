@@ -1,0 +1,11 @@
+name = "punk-zines"
+main = "src/api/index.ts"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = "dist/frontend"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "punk-zines-db"
+database_id = "local"

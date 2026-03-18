@@ -1,0 +1,23 @@
+{
+  "name": "punk-zines",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "dev:frontend": "vite dev src/frontend",
+    "build": "vite build src/frontend && wrangler deploy --dry-run",
+    "deploy": "vite build src/frontend && wrangler deploy",
+    "import": "bun run src/api/db/import.ts",
+    "db:init": "wrangler d1 execute punk-zines-db --local --file=src/api/db/schema.sql",
+    "db:init:remote": "wrangler d1 execute punk-zines-db --file=src/api/db/schema.sql"
+  },
+  "dependencies": {
+    "hono": "^4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4",
+    "typescript": "^5",
+    "vite": "^6",
+    "wrangler": "^4"
+  }
+}
