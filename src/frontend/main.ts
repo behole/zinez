@@ -1,6 +1,8 @@
 import "./style.css";
 import { fetchZines, type Zine, type ZineListResponse } from "./api";
 import { createFilterState, initFilters } from "./filters";
+import { renderTimeline } from "./timeline";
+import { initLightbox, openLightbox } from "./lightbox";
 
 const state = createFilterState();
 let currentData: ZineListResponse | null = null;
@@ -63,6 +65,16 @@ function renderGrid(zines: Zine[]): void {
 
   // Lazy load images
   observeImages(grid);
+
+  // Card click -> lightbox
+  grid.querySelectorAll<HTMLElement>(".card").forEach((card) => {
+    card.addEventListener("click", () => {
+      if (!currentData) return;
+      const id = card.dataset.id;
+      const idx = currentData.zines.findIndex((z) => z.id === id);
+      if (idx >= 0) openLightbox(currentData.zines, idx);
+    });
+  });
 
   // Infinite scroll — load next page when near bottom
   setupInfiniteScroll();
@@ -167,5 +179,7 @@ async function handleScroll(): Promise<void> {
 // Boot
 document.addEventListener("DOMContentLoaded", () => {
   initFilters(state, () => sync());
+  initLightbox();
+  renderTimeline();
   sync();
 });

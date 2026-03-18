@@ -1,0 +1,133 @@
+import type { Zine } from "./api";
+
+let lbZines: Zine[] = [];
+let lbIdx = 0;
+let zoom = 1;
+let panX = 0;
+let panY = 0;
+let dragging = false;
+let dragStartX = 0;
+let dragStartY = 0;
+
+const $ = (id: string) => document.getElementById(id);
+
+function applyTransform(): void {
+  const img = $("lb-image") as HTMLImageElement;
+  if (img) img.style.transform = `scale(${zoom}) translate(${panX}px, ${panY}px)`;
+}
+
+function resetZoom(): void {
+  zoom = 1;
+  panX = 0;
+  panY = 0;
+  applyTransform();
+}
+
+function show(zines: Zine[], idx: number): void {
+  lbZines = zines;
+  lbIdx = idx;
+  const z = zines[idx];
+  if (!z) return;
+
+  const title = [z.zine_name, z.issue_number && `#${z.issue_number}`].filter(Boolean).join(" ");
+  const titleEl = $("lb-title");
+  if (titleEl) titleEl.textContent = title;
+
+  const img = $("lb-image") as HTMLImageElement;
+  if (img) {
+    // High-res: try IA BookReader, fallback to thumb
+    let src = "";
+    if (z.ia_item_url) {
+      const match = z.ia_item_url.match(/\/details\/([^/?]+)/);
+      if (match) src = `https://archive.org/download/${match[1]}/page/n0_w3000.jpg`;
+    }
+    if (!src) src = z.ia_thumb || z.image_url || "";
+    img.src = src;
+    img.alt = title;
+  }
+
+  const link = $("lb-origin") as HTMLAnchorElement;
+  if (link) link.href = z.ia_item_url ? `${z.ia_item_url}/mode/2up` : z.image_url || "#";
+
+  const idVal = $("lb-idval");
+  if (idVal) idVal.textContent = z.id;
+
+  resetZoom();
+  const lb = $("lightbox");
+  if (lb) lb.hidden = false;
+}
+
+function close(): void {
+  const lb = $("lightbox");
+  if (lb) lb.hidden = true;
+  resetZoom();
+}
+
+function nav(dir: number): void {
+  if (!lbZines.length) return;
+  lbIdx = (lbIdx + dir + lbZines.length) % lbZines.length;
+  show(lbZines, lbIdx);
+}
+
+export function initLightbox(): void {
+  $("lb-close")?.addEventListener("click", close);
+  $("lb-prev")?.addEventListener("click", () => nav(-1));
+  $("lb-next")?.addEventListener("click", () => nav(1));
+  $("lb-zoom-in")?.addEventListener("click", () => {
+    zoom = Math.min(zoom * 1.3, 10);
+    applyTransform();
+  });
+  $("lb-zoom-out")?.addEventListener("click", () => {
+    zoom = Math.max(zoom / 1.3, 1);
+    if (zoom === 1) { panX = 0; panY = 0; }
+    applyTransform();
+  });
+  $("lb-reset")?.addEventListener("click", resetZoom);
+
+  // Close on backdrop click
+  $("lightbox")?.addEventListener("click", (e) => {
+    if ((e.target as HTMLElement).id === "lightbox") close();
+  });
+
+  // Pan/drag
+  const container = $("lb-img-container");
+  if (container) {
+    container.addEventListener("mousedown", (e) => {
+      if (zoom > 1) {
+        dragging = true;
+        dragStartX = e.clientX - panX;
+        dragStartY = e.clientY - panY;
+        container.classList.add("dragging");
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (dragging) {
+        panX = e.clientX - dragStartX;
+        panY = e.clientY - dragStartY;
+        applyTransform();
+      }
+    });
+
+    document.addEventListener("mouseup", () => {
+      if (dragging) {
+        dragging = false;
+        container.classList.remove("dragging");
+      }
+    });
+  }
+
+  // Keyboard
+  document.addEventListener("keydown", (e) => {
+    const lb = $("lightbox");
+    if (!lb || lb.hidden) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowRight") nav(1);
+    if (e.key === "ArrowLeft") nav(-1);
+  });
+}
+
+export function openLightbox(zines: Zine[], idx: number): void {
+  show(zines, idx);
+}
