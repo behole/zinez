@@ -55,7 +55,7 @@ function escSql(s: string): string {
 
 async function main() {
   const isRemote = process.argv.includes("--remote");
-  const flag = isRemote ? "" : "--local";
+  const flag = isRemote ? "--remote" : "--local";
 
   console.log(`Importing to ${isRemote ? "REMOTE" : "LOCAL"} D1...`);
 

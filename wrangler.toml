@@ -8,4 +8,4 @@ directory = "dist/frontend"
 [[d1_databases]]
 binding = "DB"
 database_name = "punk-zines-db"
-database_id = "local"
+database_id = "fff55110-9430-4e53-a455-647eb3657b00"
