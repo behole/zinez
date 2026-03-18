@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Punk Zines Archive</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>Punk Zines Archive</h1>
+    <p class="sub">3,484 zines &bull; 1967&ndash;2025 &bull; Searchable &bull; Open data</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <div class="search">
+        <input id="q" type="search" placeholder="Search name, band, location, year, tag, creator..." autocomplete="off" />
+      </div>
+      <div class="filters">
+        <button data-decade="all" class="active">All</button>
+        <button data-decade="1970">70s</button>
+        <button data-decade="1980">80s</button>
+        <button data-decade="1990">90s</button>
+        <button data-decade="2000">00s+</button>
+        <select id="sort">
+          <option value="name_asc">Name A-Z</option>
+          <option value="name_desc">Name Z-A</option>
+          <option value="year_asc">Year (oldest)</option>
+          <option value="year_desc">Year (newest)</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="stats" class="stats"></div>
+
+    <section class="panel" aria-label="Timeline">
+      <canvas id="timeline"></canvas>
+    </section>
+
+    <section id="grid" class="grid" aria-label="Results"></section>
+
+    <div id="loader" class="loader" hidden>Loading...</div>
+  </main>
+
+  <div id="lightbox" class="lb" role="dialog" aria-modal="true" hidden>
+    <div class="lb-box">
+      <div class="lb-head">
+        <span id="lb-title" class="lb-title"></span>
+        <div class="lb-actions">
+          <button id="lb-prev" title="Previous">&lsaquo;</button>
+          <button id="lb-next" title="Next">&rsaquo;</button>
+          <button id="lb-zoom-in" title="Zoom in">+</button>
+          <button id="lb-zoom-out" title="Zoom out">&minus;</button>
+          <button id="lb-reset" title="Reset zoom">Reset</button>
+          <a id="lb-origin" href="#" target="_blank" rel="noopener">View on IA</a>
+          <button id="lb-close" title="Close">Close</button>
+        </div>
+      </div>
+      <div class="lb-img" id="lb-img-container">
+        <img id="lb-image" alt="" />
+      </div>
+      <div class="lb-foot">
+        <span>Tip: &larr; &rarr; to navigate, Esc to close</span>
+        <span class="lb-id">ID: <code id="lb-idval"></code></span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>
