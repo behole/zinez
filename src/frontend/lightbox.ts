@@ -35,42 +35,12 @@ function show(zines: Zine[], idx: number): void {
   lbZines = zines;
   lbIdx = idx;
   const z = zines[idx];
-  const thumb = getThumbUrl(z);
+  if (!z) return;
 
+  const thumb = getThumbUrl(z);
   const title = [z.zine_name, z.issue_number && `#${z.issue_number}`].filter(Boolean).join(" ");
   const titleEl = $("lb-title");
   if (titleEl) titleEl.textContent = title;
-
-  const img = $("lb-image") as HTMLImageElement;
-  if (img) {
-    let highRes = "";
-    if (z.ia_item_url) {
-      const match = z.ia_item_url.match(/\/details\/([^/?]+)/);
-      if (match) highRes = `https://archive.org/services/img/${match[1]}/page/n0`;
-    }
-
-    img.onerror = null;
-    img.alt = title;
-    img.classList.remove("lb-loading");
-
-    if (thumb) {
-      img.src = thumb;
-      if (highRes && highRes !== thumb) {
-        img.classList.add("lb-loading");
-        const preload = new Image();
-        preload.onload = () => {
-          img.src = highRes;
-          img.classList.remove("lb-loading");
-        };
-        preload.onerror = () => img.classList.remove("lb-loading");
-        preload.src = highRes;
-      }
-    } else if (highRes) {
-      img.src = highRes;
-    } else {
-      img.removeAttribute("src");
-    }
-  }
 
   const link = $("lb-origin") as HTMLAnchorElement;
   if (link) link.href = z.ia_item_url ? `${z.ia_item_url}/mode/2up` : z.image_url || "#";
@@ -78,17 +48,63 @@ function show(zines: Zine[], idx: number): void {
   const idVal = $("lb-idval");
   if (idVal) idVal.textContent = z.id;
 
+  // Image loading
+  const img = $("lb-image") as HTMLImageElement;
+  const container = $("lb-img-container");
+
+  if (img && container) {
+    // Clear old image immediately — no lingering previous zine
+    img.removeAttribute("src");
+    img.classList.remove("loaded");
+    img.onerror = null;
+    img.alt = title;
+
+    // Show shimmer while loading
+    container.classList.add("loading");
+
+    // Fade in when any image arrives
+    const onImgReady = () => {
+      img.classList.add("loaded");
+      container.classList.remove("loading");
+    };
+    img.onload = onImgReady;
+
+    // Build URLs
+    let highRes = "";
+    if (z.ia_item_url) {
+      const match = z.ia_item_url.match(/\/details\/([^/?]+)/);
+      if (match) highRes = `https://archive.org/services/img/${match[1]}/page/n0`;
+    }
+
+    if (thumb) {
+      img.src = thumb;
+      if (highRes && highRes !== thumb) {
+        // Preload high-res in background
+        const preload = new Image();
+        preload.onload = () => {
+          img.classList.remove("loaded");
+          container.classList.add("loading");
+          img.src = highRes;
+        };
+        preload.src = highRes;
+      }
+    } else if (highRes) {
+      img.src = highRes;
+    }
+  }
+
   resetZoom();
   const lb = $("lightbox");
   if (lb) lb.hidden = false;
 }
 
 function close(): void {
+  const img = $("lb-image") as HTMLImageElement;
+  if (img) img.removeAttribute("src");
   const lb = $("lightbox");
   if (lb) lb.hidden = true;
   resetZoom();
 }
-
 function nav(dir: number): void {
   if (!lbZines.length) return;
   lbIdx = (lbIdx + dir + lbZines.length) % lbZines.length;
