@@ -78,6 +78,7 @@ NEGATIVE_TOKENS = {
     "newspaper", "microfilm", "microfiche", "map", "drawing", "blueprint",
     "minutes", "meeting", "newsletter archive", "course", "syllabus", "capstone",
     "yearbook", "brochure", "directory", "newspaperissue", "music event",
+    "pornographic", "pedophile",
 }
 
 
@@ -88,17 +89,22 @@ def norm_text(s: Optional[str]) -> str:
 def is_probable_zine(z: Dict) -> bool:
     name = norm_text(z.get("zine_name"))
     desc = norm_text(z.get("description"))
-    # Intentionally ignore generic tags like 'zine' that we add by default
-    text = " ".join([name, desc])
+    # Include tags in text for matching
+    tags_raw = z.get("tags") or []
+    tags_text = " ".join(norm_text(t) for t in tags_raw)
+    text = " ".join([name, desc, tags_text])
     # Series allowlist
     if any(series in name for series in KNOWN_GOOD_SERIES):
         return True
-    # Strong positives
+    # Strong negatives: check name/title for content-type mismatches
+    if any(tok in name for tok in NEGATIVE_TOKENS):
+        return False
+    # Also check tags for clearly non-zine categories
+    if any(tok in tags_text for tok in ("pornographic", "pedophile")):
+        return False
+    # Strong positives (checked against name + desc + tags)
     if any(tok in text for tok in POSITIVE_TOKENS):
         return True
-    # Strong negatives
-    if any(tok in text for tok in NEGATIVE_TOKENS):
-        return False
     # Heuristic: presence of typical zine fields
     if z.get("issue_number") or re.search(r"\bissue\b|\bno\.?\b", name):
         return True

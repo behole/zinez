@@ -154,7 +154,12 @@ class PunkZineScraper:
         }
 
         description = item_metadata.get('description', '')
-        subject = ' '.join(item_metadata.get('subject', []))
+        if isinstance(description, list):
+            description = ' '.join(str(d) for d in description)
+        subject = item_metadata.get('subject', [])
+        if isinstance(subject, str):
+            subject = [subject]
+        subject = ' '.join(str(s) for s in subject)
         text = f"{description} {subject}".lower()
 
         for country, cities in location_indicators.items():
@@ -179,7 +184,10 @@ class PunkZineScraper:
                     tags.add(subject.lower())
 
         # Extract from description
-        description = item_metadata.get('description', '').lower()
+        description = item_metadata.get('description', '')
+        if isinstance(description, list):
+            description = ' '.join(str(d) for d in description)
+        description = description.lower()
         keywords = ['hardcore', 'riot grrrl', 'anarcho', 'first wave', 'queercore',
                    'straight edge', 'crust', 'peace punk']
         for keyword in keywords:
@@ -327,7 +335,10 @@ class PunkZineScraper:
                         continue
 
                     # FILTER 3: Must have punk/zine keywords in title or description
-                    desc = metadata.get('description', '').lower()
+                    desc = metadata.get('description', '')
+                    if isinstance(desc, list):
+                        desc = ' '.join(str(d) for d in desc)
+                    desc = desc.lower()
                     combined_text = f"{title_lower} {desc}"
                     punk_keywords = ['punk', 'zine', 'fanzine', 'hardcore', 'riot grrrl', 'anarcho', 'diy']
                     if not any(keyword in combined_text for keyword in punk_keywords):
