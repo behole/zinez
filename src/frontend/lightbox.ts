@@ -37,11 +37,17 @@ function show(zines: Zine[], idx: number): void {
   if (img) {
     // High-res: try IA BookReader, fallback to thumb
     let src = "";
+    let fallback = z.ia_thumb || z.image_url || "";
     if (z.ia_item_url) {
       const match = z.ia_item_url.match(/\/details\/([^/?]+)/);
       if (match) src = `https://archive.org/download/${match[1]}/page/n0_w3000.jpg`;
     }
-    if (!src) src = z.ia_thumb || z.image_url || "";
+    if (!src) src = fallback;
+    img.onerror = () => {
+      if (img.src !== fallback && fallback) {
+        img.src = fallback;
+      }
+    };
     img.src = src;
     img.alt = title;
   }
@@ -84,38 +90,58 @@ export function initLightbox(): void {
   });
   $("lb-reset")?.addEventListener("click", resetZoom);
 
+
   // Close on backdrop click
   $("lightbox")?.addEventListener("click", (e) => {
     if ((e.target as HTMLElement).id === "lightbox") close();
   });
-
-  // Pan/drag
+  // Pan/drag (mouse + touch)
   const container = $("lb-img-container");
   if (container) {
-    container.addEventListener("mousedown", (e) => {
+    const startDrag = (cx: number, cy: number) => {
       if (zoom > 1) {
         dragging = true;
-        dragStartX = e.clientX - panX;
-        dragStartY = e.clientY - panY;
+        dragStartX = cx - panX;
+        dragStartY = cy - panY;
         container.classList.add("dragging");
-        e.preventDefault();
       }
+    };
+
+    container.addEventListener("mousedown", (e) => {
+      startDrag(e.clientX, e.clientY);
+      if (dragging) e.preventDefault();
     });
 
-    document.addEventListener("mousemove", (e) => {
+    container.addEventListener("touchstart", (e) => {
+      if (e.touches.length === 1) {
+        startDrag(e.touches[0].clientX, e.touches[0].clientY);
+        if (dragging) e.preventDefault();
+      }
+    }, { passive: false });
+
+    const moveDrag = (cx: number, cy: number) => {
       if (dragging) {
-        panX = e.clientX - dragStartX;
-        panY = e.clientY - dragStartY;
+        panX = cx - dragStartX;
+        panY = cy - dragStartY;
         applyTransform();
       }
-    });
+    };
 
-    document.addEventListener("mouseup", () => {
+    document.addEventListener("mousemove", (e) => moveDrag(e.clientX, e.clientY));
+
+    document.addEventListener("touchmove", (e) => {
+      if (e.touches.length === 1) moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: false });
+
+    const endDrag = () => {
       if (dragging) {
         dragging = false;
         container.classList.remove("dragging");
       }
-    });
+    };
+
+    document.addEventListener("mouseup", endDrag);
+    document.addEventListener("touchend", endDrag);
   }
 
   // Keyboard
