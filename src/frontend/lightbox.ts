@@ -53,13 +53,11 @@ function show(zines: Zine[], idx: number): void {
   const container = $("lb-img-container");
 
   if (img && container) {
-    // Clear old image immediately — no lingering previous zine
-    img.removeAttribute("src");
+    // Force-clear old image: set to transparent pixel and force a paint
+    img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
     img.classList.remove("loaded");
     img.onerror = null;
     img.alt = title;
-
-    // Show shimmer while loading
     container.classList.add("loading");
 
     // Fade in when any image arrives
@@ -67,7 +65,6 @@ function show(zines: Zine[], idx: number): void {
       img.classList.add("loaded");
       container.classList.remove("loading");
     };
-    img.onload = onImgReady;
 
     // Build URLs
     let highRes = "";
@@ -76,31 +73,38 @@ function show(zines: Zine[], idx: number): void {
       if (match) highRes = `https://archive.org/services/img/${match[1]}/page/n0`;
     }
 
-    if (thumb) {
-      img.src = thumb;
-      if (highRes && highRes !== thumb) {
-        // Preload high-res in background
-        const preload = new Image();
-        preload.onload = () => {
-          img.classList.remove("loaded");
-          container.classList.add("loading");
+    // Double-RAF: guarantee browser clears the old frame before loading new
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        img.onload = onImgReady;
+        if (thumb) {
+          img.src = thumb;
+          if (highRes && highRes !== thumb) {
+            const preload = new Image();
+            preload.onload = () => {
+              img.classList.remove("loaded");
+              container.classList.add("loading");
+              img.src = highRes;
+            };
+            preload.src = highRes;
+          }
+        } else if (highRes) {
           img.src = highRes;
-        };
-        preload.src = highRes;
-      }
-    } else if (highRes) {
-      img.src = highRes;
-    }
+        }
+      });
+    });
   }
 
   resetZoom();
   const lb = $("lightbox");
   if (lb) lb.hidden = false;
 }
-
 function close(): void {
   const img = $("lb-image") as HTMLImageElement;
-  if (img) img.removeAttribute("src");
+  if (img) {
+    img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+    img.classList.remove("loaded");
+  }
   const lb = $("lightbox");
   if (lb) lb.hidden = true;
   resetZoom();
