@@ -61,8 +61,9 @@ function renderCard(z: Zine): string {
   </article>`;
 }
 
-function attachCardClickHandlers(container: HTMLElement): void {
+function attachCardClickHandlers(container: HTMLElement, ids?: Set<string>): void {
   container.querySelectorAll<HTMLElement>(".card").forEach((card) => {
+    if (ids && !ids.has(card.dataset.id!)) return;
     card.addEventListener("click", () => {
       if (!currentData) return;
       const id = card.dataset.id;
@@ -148,17 +149,17 @@ async function handleScroll(): Promise<void> {
 
       currentData.page = more.page;
       currentData.zines = [...currentData.zines, ...more.zines];
-
       const grid = document.getElementById("grid")!;
       const fragment = document.createElement("div");
       fragment.innerHTML = more.zines.map(renderCard).join("");
+      const newIds = new Set(more.zines.map((z) => z.id));
 
       while (fragment.firstElementChild) {
         grid.appendChild(fragment.firstElementChild);
       }
 
       observeImages(grid);
-      attachCardClickHandlers(grid);
+      attachCardClickHandlers(grid, newIds);
       renderStats(currentData);
     } catch (err) {
       state.page--;

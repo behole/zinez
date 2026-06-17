@@ -44,7 +44,8 @@ function show(zines: Zine[], idx: number): void {
     }
     if (!src) src = fallback;
     img.onerror = () => {
-      if (img.src !== fallback && fallback) {
+      if (fallback && img.src !== fallback) {
+        img.onerror = null;
         img.src = fallback;
       }
     };
