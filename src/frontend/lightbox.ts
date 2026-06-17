@@ -35,22 +35,34 @@ function show(zines: Zine[], idx: number): void {
 
   const img = $("lb-image") as HTMLImageElement;
   if (img) {
-    // High-res: try IA BookReader, fallback to thumb
-    let src = "";
-    let fallback = z.ia_thumb || z.image_url || "";
+    const thumb = z.ia_thumb || z.image_url || "";
+    let highRes = "";
     if (z.ia_item_url) {
       const match = z.ia_item_url.match(/\/details\/([^/?]+)/);
-      if (match) src = `https://archive.org/download/${match[1]}/page/n0_w3000.jpg`;
+      if (match) highRes = `https://archive.org/download/${match[1]}/page/n0_w1600.jpg`;
     }
-    if (!src) src = fallback;
-    img.onerror = () => {
-      if (fallback && img.src !== fallback) {
-        img.onerror = null;
-        img.src = fallback;
-      }
-    };
-    img.src = src;
+
+    img.onerror = null;
     img.alt = title;
+    img.classList.remove("lb-loading");
+
+    if (thumb) {
+      img.src = thumb;
+      if (highRes && highRes !== thumb) {
+        img.classList.add("lb-loading");
+        const preload = new Image();
+        preload.onload = () => {
+          img.src = highRes;
+          img.classList.remove("lb-loading");
+        };
+        preload.onerror = () => img.classList.remove("lb-loading");
+        preload.src = highRes;
+      }
+    } else if (highRes) {
+      img.src = highRes;
+    } else {
+      img.removeAttribute("src");
+    }
   }
 
   const link = $("lb-origin") as HTMLAnchorElement;
