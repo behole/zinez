@@ -3,7 +3,7 @@ import type { Env, ZineRow, ZineResponse } from "../types";
 
 const zines = new Hono<{ Bindings: Env }>();
 
-function rowToResponse(row: ZineRow): ZineResponse {
+export function rowToResponse(row: ZineRow): ZineResponse {
   return {
     ...row,
     tags: safeParseArray(row.tags),
@@ -11,7 +11,7 @@ function rowToResponse(row: ZineRow): ZineResponse {
   };
 }
 
-function safeParseArray(s: string): string[] {
+export function safeParseArray(s: string): string[] {
   if (!s) return [];
   try {
     const parsed = JSON.parse(s);

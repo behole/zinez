@@ -11,12 +11,14 @@ export interface Zine {
   tags: string[];
   bands_featured: string[];
   creators: string;
+  circulation: string;
   source_type: string;
   archive_source: string;
   image_url: string;
   ia_item_url: string;
   ia_download_url: string;
   ia_thumb: string;
+  attribution: string;
 }
 
 export interface ZineListResponse {

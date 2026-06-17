@@ -14,7 +14,7 @@ export function initFilters(
   onChange: () => void
 ): void {
   const input = document.getElementById("q") as HTMLInputElement;
-  const sortSelect = document.getElementById("sort") as HTMLSelectElement;
+  const sortSelect = document.getElementById("sort") as unknown as HTMLSelectElement;
   const decadeButtons = document.querySelectorAll<HTMLButtonElement>("[data-decade]");
 
   let debounceTimer: ReturnType<typeof setTimeout>;
