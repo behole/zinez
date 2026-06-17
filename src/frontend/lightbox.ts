@@ -1,5 +1,13 @@
 import type { Zine } from "./api";
 
+export function getThumbUrl(z: Zine): string {
+  if (z.ia_item_url) {
+    const match = z.ia_item_url.match(/\/details\/([^/?]+)/);
+    if (match) return `https://archive.org/services/img/${match[1]}`;
+  }
+  return z.ia_thumb || z.image_url || "";
+}
+
 let lbZines: Zine[] = [];
 let lbIdx = 0;
 let zoom = 1;
@@ -27,7 +35,7 @@ function show(zines: Zine[], idx: number): void {
   lbZines = zines;
   lbIdx = idx;
   const z = zines[idx];
-  if (!z) return;
+  const thumb = getThumbUrl(z);
 
   const title = [z.zine_name, z.issue_number && `#${z.issue_number}`].filter(Boolean).join(" ");
   const titleEl = $("lb-title");
@@ -35,11 +43,10 @@ function show(zines: Zine[], idx: number): void {
 
   const img = $("lb-image") as HTMLImageElement;
   if (img) {
-    const thumb = z.ia_thumb || z.image_url || "";
     let highRes = "";
     if (z.ia_item_url) {
       const match = z.ia_item_url.match(/\/details\/([^/?]+)/);
-      if (match) highRes = `https://archive.org/download/${match[1]}/page/n0_w1600.jpg`;
+      if (match) highRes = `https://archive.org/services/img/${match[1]}/page/n0`;
     }
 
     img.onerror = null;

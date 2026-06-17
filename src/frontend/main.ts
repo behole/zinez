@@ -2,7 +2,7 @@ import "./style.css";
 import { fetchZines, type Zine, type ZineListResponse } from "./api";
 import { createFilterState, initFilters } from "./filters";
 import { renderTimeline } from "./timeline";
-import { initLightbox, openLightbox } from "./lightbox";
+import { initLightbox, openLightbox, getThumbUrl } from "./lightbox";
 
 const state = createFilterState();
 let currentData: ZineListResponse | null = null;
@@ -42,7 +42,7 @@ function renderStats(data: ZineListResponse): void {
 
 
 function renderCard(z: Zine): string {
-  const thumb = z.ia_thumb || z.image_url || "";
+  const thumb = getThumbUrl(z);
   const title = [z.zine_name, z.issue_number && `#${z.issue_number}`].filter(Boolean).join(" ");
   const locyr = [z.location, z.year].filter(Boolean).join(" · ");
   const tags = z.tags.slice(0, 4).map((t) => `<span class="tag">${t}</span>`).join("");
