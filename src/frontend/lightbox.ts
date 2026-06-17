@@ -53,15 +53,15 @@ function show(zines: Zine[], idx: number): void {
   const container = $("lb-img-container");
 
   if (img && container) {
-    // Force-clear old image: set to transparent pixel and force a paint
-    img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+    // Hide old image immediately, show shimmer
+    img.style.display = "none";
     img.classList.remove("loaded");
     img.onerror = null;
     img.alt = title;
     container.classList.add("loading");
 
-    // Fade in when any image arrives
     const onImgReady = () => {
+      img.style.display = "";
       img.classList.add("loaded");
       container.classList.remove("loading");
     };
@@ -73,26 +73,22 @@ function show(zines: Zine[], idx: number): void {
       if (match) highRes = `https://archive.org/services/img/${match[1]}/page/n0`;
     }
 
-    // Double-RAF: guarantee browser clears the old frame before loading new
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        img.onload = onImgReady;
-        if (thumb) {
-          img.src = thumb;
-          if (highRes && highRes !== thumb) {
-            const preload = new Image();
-            preload.onload = () => {
-              img.classList.remove("loaded");
-              container.classList.add("loading");
-              img.src = highRes;
-            };
-            preload.src = highRes;
-          }
-        } else if (highRes) {
+    img.onload = onImgReady;
+    if (thumb) {
+      img.src = thumb;
+      if (highRes && highRes !== thumb) {
+        const preload = new Image();
+        preload.onload = () => {
+          img.style.display = "none";
+          img.classList.remove("loaded");
+          container.classList.add("loading");
           img.src = highRes;
-        }
-      });
-    });
+        };
+        preload.src = highRes;
+      }
+    } else if (highRes) {
+      img.src = highRes;
+    }
   }
 
   resetZoom();

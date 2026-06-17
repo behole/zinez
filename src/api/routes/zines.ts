@@ -33,8 +33,8 @@ zines.get("/", async (c) => {
   const limit = Math.min(100, Math.max(1, parseInt(c.req.query("limit") || "50", 10)));
   const offset = (page - 1) * limit;
 
-  // Build query
-  const conditions: string[] = [];
+  // Build query — exclude entries without usable images
+  const conditions: string[] = ["(ia_item_url != '' OR image_url LIKE 'http%')"];
   const params: unknown[] = [];
 
   // Full-text search
